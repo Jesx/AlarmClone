@@ -114,14 +114,14 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
-//            let vcIdentifier = "setAlarm"
-//            let setAlarmVC = storyboard?.instantiateViewController(identifier: vcIdentifier) as! SetAlarmViewController
+
             let naviIdentifier = "naviAlarmSetting"
             let naviController = storyboard?.instantiateViewController(withIdentifier: naviIdentifier) as! UINavigationController
             let setAlarmVC = (naviController.viewControllers.first as! SetAlarmViewController)
+            
             setAlarmVC.alarmVC = self
-//            setAlarmVC.delegate = self
             setAlarmVC.modeChoice = 1
+            
             setAlarmVC.time = timeArray[indexPath.row].timeString
             
             self.indexPath = indexPath

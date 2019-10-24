@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56077ED823619DB400AD72C1 /* RepeatStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077ED723619DB400AD72C1 /* RepeatStatus.swift */; };
+		56077EDA2361DA9500AD72C1 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077ED92361DA9500AD72C1 /* ModelData.swift */; };
 		566FB147235F6609004922CC /* TimeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB146235F6609004922CC /* TimeElement.swift */; };
 		566FB149235FE177004922CC /* SetAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */; };
 		566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */; };
@@ -29,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		56077ED723619DB400AD72C1 /* RepeatStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatStatus.swift; sourceTree = "<group>"; };
+		56077ED92361DA9500AD72C1 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		566FB146235F6609004922CC /* TimeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeElement.swift; sourceTree = "<group>"; };
 		566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,9 +79,9 @@
 		566FB14B235FE980004922CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				56077ED92361DA9500AD72C1 /* ModelData.swift */,
 				56D25A872361524200296148 /* AlarmData.swift */,
 				566FB146235F6609004922CC /* TimeElement.swift */,
-				56077ED723619DB400AD72C1 /* RepeatStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,9 +215,9 @@
 				566FB147235F6609004922CC /* TimeElement.swift in Sources */,
 				5673F616235EA043000B9A8A /* SetAlarmViewController.swift in Sources */,
 				56D25A8A23616D3200296148 /* RingToneTableViewController.swift in Sources */,
+				56077EDA2361DA9500AD72C1 /* ModelData.swift in Sources */,
 				5673F600235E943E000B9A8A /* AppDelegate.swift in Sources */,
 				56732F2023618CB2009CB9B7 /* RingToneTableViewCell.swift in Sources */,
-				56077ED823619DB400AD72C1 /* RepeatStatus.swift in Sources */,
 				5673F602235E943E000B9A8A /* SceneDelegate.swift in Sources */,
 				566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */,
 				5673F614235E9925000B9A8A /* AlarmTableViewCell.swift in Sources */,

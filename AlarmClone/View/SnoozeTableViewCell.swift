@@ -11,6 +11,7 @@ import UIKit
 class SnoozeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var switchButton: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()

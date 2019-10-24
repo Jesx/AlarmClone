@@ -17,17 +17,17 @@ class SetAlarmViewController: UIViewController {
     
     var alarmVC: AlarmViewController!
 
-    let defaults = UserDefaults.standard
+//    let defaults = UserDefaults.standard
     
     var modeChoice = 0
     var time: String?
     
     var repeatStatus = "Never"
-    var ringTone = "Slow Rise"
-    var label = "Alarm"
+    var ringTone: String!
+    var label: String!
     
     enum Mode: Int {
-        case Add = 0, Edit
+        case Add = 0, Edit = 1
 
         var title: String {
             switch  self {
@@ -80,13 +80,21 @@ class SetAlarmViewController: UIViewController {
         tableView.dataSource = self
         
         alarmVC.timeArray = AlarmData.loadData()
+        
+        if modeChoice == 0 {
+            ringTone = "Slow Rise"
+            label = "Alarm"
+        } else {
+            ringTone = alarmVC.timeArray[(alarmVC.indexPath?.row)!].ringTone
+            label = alarmVC.timeArray[(alarmVC.indexPath?.row)!].textLabel
+        }
+        
         tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -227,6 +235,7 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
             case 2:
                 let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: RingToneTableViewController.self)) as! RingToneTableViewController
                 vc.delegate = self
+                vc.ringTone = ringTone
                 navigationController?.pushViewController(vc, animated: true)
                 
             default:

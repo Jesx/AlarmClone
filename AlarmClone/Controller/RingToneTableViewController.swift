@@ -7,9 +7,7 @@
 //
 
 import UIKit
-enum DataSource {
-    static let ringTone = ["Rain Drops","Silk", "Slow Rise", "Snowman Frozen", "Whistle"]
-}
+
 
 protocol RingToneSelectedDelegate {
     func ringToneSelected (index: Int)
@@ -20,20 +18,24 @@ class RingToneTableViewController: UITableViewController {
     var ringArray: [(ringTone: String, isSelect: Bool)] = DataSource.ringTone.map { (ringTone: $0, isSelect: false) }
     
     var index: Int!
+    var ringTone: String!
     
     var cell: RingToneTableViewCell?
     var delegate: RingToneSelectedDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        ringArray[index].isSelect = true
         
+        navigationItem.title = "Sound"
+
         let nib = UINib(nibName: "RingToneTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "RingToneCell")
         
         tableView.tableFooterView = UIView()
         
+        index = ringArray.firstIndex(where: { $0.ringTone == ringTone })
+        ringArray[index].isSelect = true
+
     }
 
     // MARK: - Table view data source
@@ -55,6 +57,10 @@ class RingToneTableViewController: UITableViewController {
         cell.thisTextLabel.text = ringArray[indexPath.row].ringTone
         cell.thisImageView.image = ringArray[indexPath.row].isSelect ? UIImage(named: "checkmark") : nil
         
+        if ringArray[indexPath.row].isSelect {
+            self.cell = cell
+        }
+        
         return cell
     }
     
@@ -62,6 +68,7 @@ class RingToneTableViewController: UITableViewController {
         
         return "RINGTONES"
     }
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let textLabel = UILabel()
         textLabel.frame = CGRect(x: 20, y: 36, width: 300, height: 10)

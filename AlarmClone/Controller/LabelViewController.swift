@@ -27,6 +27,7 @@ class LabelViewController: UIViewController {
         textField.addLine(position: .LINE_POSITION_BOTTOM, color: .gray, width: 0.5)
         
         textField.text = text
+        navigationItem.title = "Label"
     }
 
     override func viewDidAppear(_ animated: Bool) {

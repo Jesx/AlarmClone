@@ -144,20 +144,20 @@
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SetAlarmTableViewCell" id="mXA-8X-y5V" customClass="SetAlarmTableViewCell" customModule="AlarmClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="42"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="42.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mXA-8X-y5V" id="QXc-J4-WIl">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-pF-zun">
-                                                    <rect key="frame" x="20" y="10" width="44" height="22"/>
+                                                    <rect key="frame" x="20" y="10" width="44" height="22.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSy-fL-kyA">
-                                                    <rect key="frame" x="362" y="10" width="42" height="22"/>
+                                                    <rect key="frame" x="362" y="10" width="42" height="22.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -179,32 +179,38 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SnoozeTableViewCell" id="l6y-LD-Wfa" customClass="SnoozeTableViewCell" customModule="AlarmClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="97.5" width="414" height="42"/>
+                                        <rect key="frame" x="0.0" y="98" width="414" height="42.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l6y-LD-Wfa" id="H8R-tW-pkB">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7er-Se-tlN">
-                                                    <rect key="frame" x="20" y="10" width="44" height="22"/>
+                                                    <rect key="frame" x="20" y="10" width="44" height="22.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Jd-l6-q09">
+                                                    <rect key="frame" x="345" y="6" width="51" height="31"/>
+                                                </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="7er-Se-tlN" secondAttribute="bottom" constant="10" id="59x-uJ-OlG"/>
                                                 <constraint firstItem="7er-Se-tlN" firstAttribute="leading" secondItem="H8R-tW-pkB" secondAttribute="leading" constant="20" id="Dfa-qy-WtP"/>
+                                                <constraint firstItem="4Jd-l6-q09" firstAttribute="centerY" secondItem="H8R-tW-pkB" secondAttribute="centerY" id="F9v-fc-Vo8"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Jd-l6-q09" secondAttribute="trailing" constant="20" id="Y97-cd-Ky0"/>
                                                 <constraint firstItem="7er-Se-tlN" firstAttribute="top" secondItem="H8R-tW-pkB" secondAttribute="top" constant="10" id="xtP-w5-s7T"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="itemLabel" destination="7er-Se-tlN" id="Hqn-M1-ohu"/>
+                                            <outlet property="switchButton" destination="4Jd-l6-q09" id="CtR-hR-8pR"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeleteTableViewCell" id="8vo-oV-zP0" customClass="DeleteTableViewCell" customModule="AlarmClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="139.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="140.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8vo-oV-zP0" id="iYi-W5-YM8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>

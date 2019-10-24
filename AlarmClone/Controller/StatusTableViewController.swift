@@ -14,16 +14,7 @@ protocol SetRepeatDelegate {
 
 class StatusTableViewController: UITableViewController {
     
-    var repeatStatusArray : [RepeatStatus] = [
-        RepeatStatus(fullName: "Every Sunday", shortName: "Sun", isSelected: false),
-        RepeatStatus(fullName: "Every Monday", shortName: "Mon", isSelected: false),
-        RepeatStatus(fullName: "Every Tuesday", shortName: "Tue", isSelected: false),
-        RepeatStatus(fullName: "Every Wednesday", shortName: "Wed", isSelected: false),
-        RepeatStatus(fullName: "Every Thusday", shortName: "Thu", isSelected: false),
-        RepeatStatus(fullName: "Every Friday", shortName: "Fri", isSelected: false),
-        RepeatStatus(fullName: "Every Sunday", shortName: "Sun", isSelected: false)
-    ]
-    
+    var repeatStatusArray = DataSource.repeatStatus
 
     override func viewDidLoad() {
         super.viewDidLoad()
