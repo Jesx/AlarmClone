@@ -8,11 +8,9 @@
 
 import Foundation
 
-struct TimeElement {
-    var time: String
+struct TimeElement: Codable {
+    var timeString: String
+    var time: Date
     var textLabel: String
     var isOn: Bool
-    var repeatStatus: String
-    var ringTone: String
-    
 }

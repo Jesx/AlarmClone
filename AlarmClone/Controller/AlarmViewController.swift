@@ -6,8 +6,8 @@
 //  Copyright © 2019 Jes Yang. All rights reserved.
 //
 
-// Set page
-// Store
+// Store: UserDefaults
+// Pass data (tableView)
 
 import UIKit
 
@@ -18,8 +18,16 @@ class AlarmViewController: UIViewController {
     var timeText: String?
     var indexPath: IndexPath?
     
+//    let defaults = UserDefaults.standard
+    
 //    var timeArray = ["8:00AM", "9:00AM", "9:00AM", "9:00AM"]
+    
     var timeArray = [TimeElement]()
+//    {
+//        didSet {
+//            setNotification(at: 0)
+//        }
+//    }
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
@@ -37,6 +45,8 @@ class AlarmViewController: UIViewController {
         
         // Hiding extra line of empty cell
         tableView.tableFooterView = UIView()
+        
+        timeArray = AlarmData.loadData()
     }
     
     @IBAction func editAlarm(_ sender: Any) {
@@ -57,17 +67,14 @@ class AlarmViewController: UIViewController {
     }
     
     @IBAction func addAlarm(_ sender: UIBarButtonItem) {
-        let vcIdentifier = "setAlarm"
-        let setAlarmVC = storyboard?.instantiateViewController(identifier: vcIdentifier) as! SetAlarmViewController
         let naviIdentifier = "naviAlarmSetting"
         let naviController = storyboard?.instantiateViewController(withIdentifier: naviIdentifier) as! UINavigationController
+        let setAlarmVC = (naviController.viewControllers.first as! SetAlarmViewController)
         
-        setAlarmVC.delegate = self
-
+        setAlarmVC.alarmVC = self
         setAlarmVC.modeChoice = 0
         
         present(naviController, animated: true, completion: nil)
-        
     }
     
 }
@@ -82,9 +89,9 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AlarmTableViewCell.self), for: indexPath) as! AlarmTableViewCell
         
-        cell.timeLabel.text = timeArray[indexPath.row].time
+        cell.timeLabel.text = timeArray[indexPath.row].timeString
         
-        let timeTextCount = timeArray[indexPath.row].time.count
+        let timeTextCount = timeArray[indexPath.row].timeString.count
         let attributedString = NSMutableAttributedString.init(string: cell.timeLabel.text!)
         
         // Set the custom font in string
@@ -107,16 +114,15 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
-            let vcIdentifier = "setAlarm"
-            let setAlarmVC = storyboard?.instantiateViewController(identifier: vcIdentifier) as! SetAlarmViewController
+//            let vcIdentifier = "setAlarm"
+//            let setAlarmVC = storyboard?.instantiateViewController(identifier: vcIdentifier) as! SetAlarmViewController
             let naviIdentifier = "naviAlarmSetting"
             let naviController = storyboard?.instantiateViewController(withIdentifier: naviIdentifier) as! UINavigationController
-            
-            setAlarmVC.delegate = self
-            
-//            setAlarmVC.navigationTitle = "Edit Alarm"
+            let setAlarmVC = (naviController.viewControllers.first as! SetAlarmViewController)
+            setAlarmVC.alarmVC = self
+//            setAlarmVC.delegate = self
             setAlarmVC.modeChoice = 1
-            setAlarmVC.time = timeArray[indexPath.row].time
+            setAlarmVC.time = timeArray[indexPath.row].timeString
             
             self.indexPath = indexPath
             
@@ -137,27 +143,46 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             timeArray.remove(at: indexPath.row)
+            AlarmData.saveData(timeArray: timeArray)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    func setNotification(at index: Int) {
+        let content = UNMutableNotificationContent()
+        content.title = "Alarm Notification"
+        content.body = "This is the \(timeArray[index].textLabel) notificaion."
+        content.badge = 1
+        content.sound = UNNotificationSound.default
+        
+    
+        let triggerTime = Calendar.current.dateComponents([.hour,.minute], from: timeArray[index].time)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
+            print("Notificaion succeed.")
+        })
+    }
+    
 }
 
 extension AlarmViewController: AlarmSetDelegate {
-
-    func alarmSet(mode: Int, alarmString: String, label: String, isOn: Bool, repeatStatus: String, ringTone: String) {
-
+    func alarmSet(mode: Int, alarmString: String, time: Date, label: String, isOn: Bool) {
         if mode == 1 {
-            timeArray[(indexPath?.row)!].time = alarmString
+            timeArray[(indexPath?.row)!].timeString = alarmString
             
             tableView.reloadRows(at: [indexPath!], with: .fade)
             
             let cell = tableView.cellForRow(at: indexPath!) as! AlarmTableViewCell
             cell.onOffSwitch.isOn = true
         } else {
-            let addAlarm = TimeElement(time: alarmString, textLabel: label, isOn: isOn, repeatStatus: repeatStatus, ringTone: ringTone)
+            let addAlarm = TimeElement(timeString: alarmString, time: time, textLabel: label, isOn: isOn)
             timeArray.append(addAlarm)
             tableView.reloadData()
         }
     }
+
 }
 

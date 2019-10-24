@@ -216,6 +216,9 @@
                                                     <state key="normal" title="Delete Alarm">
                                                         <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="deleteAlarm:" destination="30j-Ij-DwH" eventType="touchUpInside" id="NHq-6l-oEO"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -227,32 +230,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lvh-PJ-jcD">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="mju-Hj-PNx">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rrZ-nd-uBp">
-                                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="save:" destination="30j-Ij-DwH" id="Rqf-Fq-LDi"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Lvh-PJ-jcD" firstAttribute="top" secondItem="MaY-kL-HKS" secondAttribute="top" id="BSx-CV-MKS"/>
                             <constraint firstItem="Gu6-3h-Lke" firstAttribute="trailing" secondItem="MaY-kL-HKS" secondAttribute="trailing" id="F7O-Hs-AWn"/>
                             <constraint firstItem="Ovb-Eh-p1l" firstAttribute="leading" secondItem="MaY-kL-HKS" secondAttribute="leading" id="GK6-E5-aYI"/>
-                            <constraint firstItem="Lvh-PJ-jcD" firstAttribute="leading" secondItem="MaY-kL-HKS" secondAttribute="leading" id="GmP-oD-9O6"/>
                             <constraint firstItem="Gu6-3h-Lke" firstAttribute="leading" secondItem="MaY-kL-HKS" secondAttribute="leading" id="QzY-1U-788"/>
                             <constraint firstItem="MaY-kL-HKS" firstAttribute="trailing" secondItem="Ovb-Eh-p1l" secondAttribute="trailing" id="XLA-nb-0ki"/>
                             <constraint firstItem="Gu6-3h-Lke" firstAttribute="top" secondItem="MaY-kL-HKS" secondAttribute="top" id="dBY-0G-3r2"/>
                             <constraint firstItem="Ovb-Eh-p1l" firstAttribute="top" secondItem="Gu6-3h-Lke" secondAttribute="bottom" id="grm-7y-vvK"/>
                             <constraint firstItem="MaY-kL-HKS" firstAttribute="bottom" secondItem="Ovb-Eh-p1l" secondAttribute="bottom" id="mdQ-8a-dPr"/>
-                            <constraint firstItem="Lvh-PJ-jcD" firstAttribute="trailing" secondItem="MaY-kL-HKS" secondAttribute="trailing" id="rDc-5o-a41"/>
+                            <constraint firstItem="Gu6-3h-Lke" firstAttribute="top" secondItem="MaY-kL-HKS" secondAttribute="top" id="vnC-mi-i12"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MaY-kL-HKS"/>
                     </view>
@@ -263,29 +252,53 @@
                                 <action selector="cancel:" destination="30j-Ij-DwH" id="dL6-Dx-zF2"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rrZ-nd-uBp">
+                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="save:" destination="30j-Ij-DwH" id="Rqf-Fq-LDi"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="datePicker" destination="Gu6-3h-Lke" id="747-vf-Jgl"/>
                         <outlet property="tableView" destination="Ovb-Eh-p1l" id="HhO-0G-JGs"/>
-                        <segue destination="obM-IP-cbu" kind="show" id="wr6-U7-Phj"/>
-                        <segue destination="dnw-uJ-d2a" kind="show" id="T6b-G7-DOs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPf-dn-zd7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3726.0869565217395" y="101.78571428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Label View Controller-->
         <scene sceneID="92n-T9-fpi">
             <objects>
-                <viewController id="obM-IP-cbu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LabelViewController" id="obM-IP-cbu" customClass="LabelViewController" customModule="AlarmClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="feC-Rj-8Uu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vSf-Xq-7y1">
+                                <rect key="frame" x="0.0" y="423" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9bv-QT-dih"/>
+                                </constraints>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vSf-Xq-7y1" firstAttribute="centerX" secondItem="feC-Rj-8Uu" secondAttribute="centerX" id="gna-fJ-rgq"/>
+                            <constraint firstItem="TPm-Bp-uFU" firstAttribute="trailing" secondItem="vSf-Xq-7y1" secondAttribute="trailing" id="jaI-xZ-EoQ"/>
+                            <constraint firstItem="vSf-Xq-7y1" firstAttribute="leading" secondItem="TPm-Bp-uFU" secondAttribute="leading" id="mUA-11-Phm"/>
+                            <constraint firstItem="vSf-Xq-7y1" firstAttribute="centerY" secondItem="feC-Rj-8Uu" secondAttribute="centerY" id="zti-O0-2bq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="TPm-Bp-uFU"/>
                     </view>
                     <navigationItem key="navigationItem" id="MM0-xB-Opo"/>
+                    <connections>
+                        <outlet property="textField" destination="vSf-Xq-7y1" id="eBn-uH-eso"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oK2-R8-bEC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -429,7 +442,6 @@
         <!--Navigation Controller-->
         <scene sceneID="AjL-rp-Nkx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5Y-51-QR0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="naviAlarmSetting" automaticallyAdjustsScrollViewInsets="NO" id="wlY-t5-h1N" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AxH-2B-bBs">
@@ -445,6 +457,7 @@
                         <segue destination="30j-Ij-DwH" kind="relationship" relationship="rootViewController" id="W07-ys-9hB"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5Y-51-QR0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2815.9420289855075" y="101.78571428571428"/>
         </scene>

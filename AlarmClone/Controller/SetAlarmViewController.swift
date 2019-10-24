@@ -9,26 +9,41 @@
 import UIKit
 
 protocol AlarmSetDelegate {
-    func alarmSet(mode: Int, alarmString: String, label: String, isOn: Bool, repeatStatus: String, ringTone: String)
+    func alarmSet(mode: Int, alarmString: String, time: Date, label: String, isOn: Bool)
 }
 
 class SetAlarmViewController: UIViewController {
 
-    
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var tableView: UITableView!
     
-    
     let cellHeight = CGFloat(50)
     
+    var alarmVC: AlarmViewController!
+    
     var delegate: AlarmSetDelegate?
+    let defaults = UserDefaults.standard
     
     var modeChoice = 0
     var time: String?
     
-    var repeatStatus = "Never"
-    var label = "Alarm"
-    var ringTone = "Slow Rise"
+    var repeatStatus = "Never" {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var ringTone = "Slow Rise" {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var label = "Alarm" {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     enum Mode: Int {
         case Add = 0, Edit
@@ -41,9 +56,7 @@ class SetAlarmViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    fileprivate func datePickerSetting() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mma"
         
@@ -52,16 +65,16 @@ class SetAlarmViewController: UIViewController {
         if let date = dateFormatter.date(from: time ?? "") {
             datePicker.setDate(date, animated: true)
         }
-        
-//        datePicker.setValue(UIColor.white, forKey: "textColor")
-        
+    }
+    
+    fileprivate func datePickerColorSetting() {
         // Set datePicker's color setting
         if let pickerView = datePicker.subviews.first {
-
+            
             for subview in pickerView.subviews {
-
+                
                 if subview.frame.height <= 5 {
-
+                    
                     subview.backgroundColor = UIColor.gray
                     subview.tintColor = UIColor.gray
                     subview.layer.borderColor = UIColor.gray.cgColor
@@ -71,22 +84,21 @@ class SetAlarmViewController: UIViewController {
             
             datePicker.setValue(UIColor.white, forKey: "textColor")
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        datePickerSetting()
+        datePickerColorSetting()
         
         // Set Navigation Title
-//        thisNavigationItem.title = navigationTitle
         navigationItem.title = modeChoice == 0 ? Mode.Add.title : Mode.Edit.title
-        
-        // Add line for delete button
-//        let deleteButtonUpBottomLine = CALayer()
-//        deleteButtonUpBottomLine.frame = CGRect(x: 0, y: 0.5, width: datePicker.frame.width, height: datePicker.frame.height - 1)
-//        deleteButtonUpBottomLine.backgroundColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
-
-//        datePicker.layer.addSublayer(deleteButtonUpBottomLine)
-//        datePicker.backgroundColor = #colorLiteral(red: 0.5704585314, green: 0.5704723597, blue: 0.5704649091, alpha: 1)
         
         tableView.delegate = self
         tableView.dataSource = self
         
+        alarmVC.timeArray = AlarmData.loadData()
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -94,17 +106,48 @@ class SetAlarmViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mma"
-        delegate?.alarmSet(mode: modeChoice, alarmString:  dateFormatter.string(from: datePicker.date), label: label, isOn: true, repeatStatus: repeatStatus, ringTone: ringTone)
-//        print(dateFormatter.string(from: datePicker.date))
         
+        let timeString = changeDateToString()
+        let time = datePicker.date
+        
+        if modeChoice == 0 {
+            
+            let timeElement = TimeElement(timeString: timeString, time: time, textLabel: label, isOn: true)
+            alarmVC.timeArray.append(timeElement)
+            
+        } else {
+
+            alarmVC.timeArray[(alarmVC.indexPath?.row)!].timeString = timeString
+            alarmVC.timeArray[(alarmVC.indexPath?.row)!].textLabel = label
+            alarmVC.timeArray[(alarmVC.indexPath?.row)!].time = time
+        }
+        
+        AlarmData.saveData(timeArray: alarmVC.timeArray)
+        alarmVC.timeArray = AlarmData.loadData()
+        alarmVC.tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
-      
+
+    
+    func changeDateToString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mma"
+        let timeString = dateFormatter.string(from: datePicker.date)
+        
+        return timeString
+//        delegate?.alarmSet(mode: modeChoice, alarmString:  dateFormatter.string(from: datePicker.date), time: datePicker.date, label: label, isOn: true)
+        //        print(dateFormatter.string(from: datePicker.date))
+    }
+    @IBAction func deleteAlarm(_ sender: UIButton) {
+        alarmVC.timeArray.remove(at: (alarmVC.indexPath?.row)!)
+        AlarmData.saveData(timeArray: alarmVC.timeArray)
+        alarmVC.tableView.reloadData()
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
-extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource{
+extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return modeChoice == 0 ? 1 : 2
@@ -187,7 +230,11 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource{
                 let vc = storyboard?.instantiateViewController(withIdentifier: "StatusTableViewController") as! StatusTableViewController
                 
                 navigationController?.pushViewController(vc, animated: true)
-//                performSegue(withIdentifier: "statusSegue", sender: self)
+            case 1:
+                let vc = storyboard?.instantiateViewController(withIdentifier: "LabelViewController") as! LabelViewController
+                vc.delegate = self
+                vc.text = label
+                navigationController?.pushViewController(vc, animated: true)
             default:
                 break
             }
@@ -207,4 +254,11 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 30
     }
+}
+
+extension SetAlarmViewController: LabelSettingDelegate {
+    func labelSetting(label: String) {
+        self.label = label
+    }
+    
 }

@@ -20,6 +20,8 @@
 		5673F60C235E943F000B9A8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5673F60A235E943F000B9A8A /* LaunchScreen.storyboard */; };
 		5673F614235E9925000B9A8A /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5673F613235E9925000B9A8A /* AlarmTableViewCell.swift */; };
 		5673F616235EA043000B9A8A /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5673F615235EA043000B9A8A /* SetAlarmViewController.swift */; };
+		56D25A642360B58C00296148 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D25A632360B58C00296148 /* LabelViewController.swift */; };
+		56D25A882361524200296148 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D25A872361524200296148 /* AlarmData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		5673F60D235E943F000B9A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5673F613235E9925000B9A8A /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		5673F615235EA043000B9A8A /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
+		56D25A632360B58C00296148 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
+		56D25A872361524200296148 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				566FB146235F6609004922CC /* TimeElement.swift */,
+				56D25A872361524200296148 /* AlarmData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 				5673F603235E943E000B9A8A /* AlarmViewController.swift */,
 				5673F615235EA043000B9A8A /* SetAlarmViewController.swift */,
 				566FB15223606803004922CC /* StatusTableViewController.swift */,
+				56D25A632360B58C00296148 /* LabelViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56D25A642360B58C00296148 /* LabelViewController.swift in Sources */,
 				5673F604235E943E000B9A8A /* AlarmViewController.swift in Sources */,
 				566FB147235F6609004922CC /* TimeElement.swift in Sources */,
 				5673F616235EA043000B9A8A /* SetAlarmViewController.swift in Sources */,
@@ -199,6 +206,7 @@
 				566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */,
 				5673F614235E9925000B9A8A /* AlarmTableViewCell.swift in Sources */,
 				566FB15123605B1C004922CC /* DeleteTableViewCell.swift in Sources */,
+				56D25A882361524200296148 /* AlarmData.swift in Sources */,
 				566FB149235FE177004922CC /* SetAlarmTableViewCell.swift in Sources */,
 				566FB15323606803004922CC /* StatusTableViewController.swift in Sources */,
 			);
