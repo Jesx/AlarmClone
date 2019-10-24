@@ -18,16 +18,7 @@ class AlarmViewController: UIViewController {
     var timeText: String?
     var indexPath: IndexPath?
     
-//    let defaults = UserDefaults.standard
-    
-//    var timeArray = ["8:00AM", "9:00AM", "9:00AM", "9:00AM"]
-    
     var timeArray = [TimeElement]()
-//    {
-//        didSet {
-//            setNotification(at: 0)
-//        }
-//    }
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
@@ -76,7 +67,6 @@ class AlarmViewController: UIViewController {
         
         present(naviController, animated: true, completion: nil)
     }
-    
 }
 
 extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
@@ -133,7 +123,6 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
                 tableView.separatorInset = .init(top: 0, left: 15, bottom: 0, right: 0)
             }
         }
-        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -155,7 +144,6 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         content.badge = 1
         content.sound = UNNotificationSound.default
         
-    
         let triggerTime = Calendar.current.dateComponents([.hour,.minute], from: timeArray[index].time)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: true)
         
@@ -168,20 +156,4 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-//extension AlarmViewController: AlarmSetDelegate {
-//    func alarmSet(mode: Int, alarmString: String, time: Date, label: String, isOn: Bool) {
-//        if mode == 1 {
-//            timeArray[(indexPath?.row)!].timeString = alarmString
-//
-//            tableView.reloadRows(at: [indexPath!], with: .fade)
-//
-//            let cell = tableView.cellForRow(at: indexPath!) as! AlarmTableViewCell
-//            cell.onOffSwitch.isOn = true
-//        } else {
-//            let addAlarm = TimeElement(timeString: alarmString, time: time, textLabel: label, isOn: isOn)
-//            timeArray.append(addAlarm)
-//            tableView.reloadData()
-//        }
-//    }
-//}
 

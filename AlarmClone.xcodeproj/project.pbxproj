@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		56077EDA2361DA9500AD72C1 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077ED92361DA9500AD72C1 /* ModelData.swift */; };
+		56077EE02361EDB800AD72C1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077EDF2361EDB800AD72C1 /* CustomTextField.swift */; };
 		566FB147235F6609004922CC /* TimeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB146235F6609004922CC /* TimeElement.swift */; };
 		566FB149235FE177004922CC /* SetAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */; };
 		566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		56077ED92361DA9500AD72C1 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		56077EDF2361EDB800AD72C1 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		566FB146235F6609004922CC /* TimeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeElement.swift; sourceTree = "<group>"; };
 		566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeTableViewCell.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				566FB15023605B1C004922CC /* DeleteTableViewCell.swift */,
 				56732F1E23618CB2009CB9B7 /* RingToneTableViewCell.swift */,
 				56732F1F23618CB2009CB9B7 /* RingToneTableViewCell.xib */,
+				56077EDF2361EDB800AD72C1 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				5673F604235E943E000B9A8A /* AlarmViewController.swift in Sources */,
 				566FB147235F6609004922CC /* TimeElement.swift in Sources */,
 				5673F616235EA043000B9A8A /* SetAlarmViewController.swift in Sources */,
+				56077EE02361EDB800AD72C1 /* CustomTextField.swift in Sources */,
 				56D25A8A23616D3200296148 /* RingToneTableViewController.swift in Sources */,
 				56077EDA2361DA9500AD72C1 /* ModelData.swift in Sources */,
 				5673F600235E943E000B9A8A /* AppDelegate.swift in Sources */,
