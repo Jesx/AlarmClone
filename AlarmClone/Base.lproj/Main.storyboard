@@ -19,8 +19,8 @@
                         <color key="selectedImageTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="UTx-bD-CyA" kind="relationship" relationship="viewControllers" id="OVC-Wl-NOQ"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="7ju-Gb-ENq"/>
+                        <segue destination="UTx-bD-CyA" kind="relationship" relationship="viewControllers" id="OVC-Wl-NOQ"/>
                         <segue destination="0ej-Zz-18G" kind="relationship" relationship="viewControllers" id="fJj-yu-ccW"/>
                         <segue destination="W4D-wD-Ust" kind="relationship" relationship="viewControllers" id="rwh-jQ-1T5"/>
                         <segue destination="Yoq-tH-FKD" kind="relationship" relationship="viewControllers" id="R91-60-LVA"/>

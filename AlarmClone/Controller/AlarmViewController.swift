@@ -6,8 +6,8 @@
 //  Copyright © 2019 Jes Yang. All rights reserved.
 //
 
-// Store: UserDefaults
-// Pass data (tableView)
+// Switch button function
+// Repeat
 
 import UIKit
 
@@ -54,7 +54,6 @@ class AlarmViewController: UIViewController {
             editBarButton.style = .done
             tableView.separatorInset = .init(top: 0, left: 60, bottom: 0, right: 0)
         }
-        
     }
     
     @IBAction func addAlarm(_ sender: UIBarButtonItem) {
@@ -90,10 +89,13 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         
         // Set the attributed string to the UILabel object
         cell.timeLabel.attributedText = attributedString
+        
         cell.selectionStyle = .none
         
         cell.accessoryView = cell.onOffSwitch
         cell.editingAccessoryView = cell.tailImageView
+        
+        cell.alarmNameLabel.text = timeArray[indexPath.row].textLabel
 
         return cell
     }
@@ -136,24 +138,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
-    func setNotification(at index: Int) {
-        let content = UNMutableNotificationContent()
-        content.title = "Alarm Notification"
-        content.body = "This is the \(timeArray[index].textLabel) notificaion."
-        content.badge = 1
-        content.sound = UNNotificationSound.default
-        
-        let triggerTime = Calendar.current.dateComponents([.hour,.minute], from: timeArray[index].time)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: true)
-        
-        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
-            print("Notificaion succeed.")
-        })
-    }
-    
+
 }
 
 

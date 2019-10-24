@@ -13,5 +13,6 @@ struct TimeElement: Codable {
     var time: Date
     var textLabel: String
     var ringTone: String
+    var repeatStatus: String
     var isOn: Bool
 }
