@@ -168,21 +168,20 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension AlarmViewController: AlarmSetDelegate {
-    func alarmSet(mode: Int, alarmString: String, time: Date, label: String, isOn: Bool) {
-        if mode == 1 {
-            timeArray[(indexPath?.row)!].timeString = alarmString
-            
-            tableView.reloadRows(at: [indexPath!], with: .fade)
-            
-            let cell = tableView.cellForRow(at: indexPath!) as! AlarmTableViewCell
-            cell.onOffSwitch.isOn = true
-        } else {
-            let addAlarm = TimeElement(timeString: alarmString, time: time, textLabel: label, isOn: isOn)
-            timeArray.append(addAlarm)
-            tableView.reloadData()
-        }
-    }
-
-}
+//extension AlarmViewController: AlarmSetDelegate {
+//    func alarmSet(mode: Int, alarmString: String, time: Date, label: String, isOn: Bool) {
+//        if mode == 1 {
+//            timeArray[(indexPath?.row)!].timeString = alarmString
+//
+//            tableView.reloadRows(at: [indexPath!], with: .fade)
+//
+//            let cell = tableView.cellForRow(at: indexPath!) as! AlarmTableViewCell
+//            cell.onOffSwitch.isOn = true
+//        } else {
+//            let addAlarm = TimeElement(timeString: alarmString, time: time, textLabel: label, isOn: isOn)
+//            timeArray.append(addAlarm)
+//            tableView.reloadData()
+//        }
+//    }
+//}
 

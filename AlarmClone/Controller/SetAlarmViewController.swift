@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol AlarmSetDelegate {
-    func alarmSet(mode: Int, alarmString: String, time: Date, label: String, isOn: Bool)
-}
-
 class SetAlarmViewController: UIViewController {
 
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -20,30 +16,15 @@ class SetAlarmViewController: UIViewController {
     let cellHeight = CGFloat(50)
     
     var alarmVC: AlarmViewController!
-    
-    var delegate: AlarmSetDelegate?
+
     let defaults = UserDefaults.standard
     
     var modeChoice = 0
     var time: String?
     
-    var repeatStatus = "Never" {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    var ringTone = "Slow Rise" {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    var label = "Alarm" {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var repeatStatus = "Never"
+    var ringTone = "Slow Rise"
+    var label = "Alarm"
     
     enum Mode: Int {
         case Add = 0, Edit
@@ -99,6 +80,13 @@ class SetAlarmViewController: UIViewController {
         tableView.dataSource = self
         
         alarmVC.timeArray = AlarmData.loadData()
+        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -112,7 +100,7 @@ class SetAlarmViewController: UIViewController {
         
         if modeChoice == 0 {
             
-            let timeElement = TimeElement(timeString: timeString, time: time, textLabel: label, isOn: true)
+            let timeElement = TimeElement(timeString: timeString, time: time, textLabel: label, ringTone: ringTone, isOn: true)
             alarmVC.timeArray.append(timeElement)
             
         } else {
@@ -120,6 +108,7 @@ class SetAlarmViewController: UIViewController {
             alarmVC.timeArray[(alarmVC.indexPath?.row)!].timeString = timeString
             alarmVC.timeArray[(alarmVC.indexPath?.row)!].textLabel = label
             alarmVC.timeArray[(alarmVC.indexPath?.row)!].time = time
+            alarmVC.timeArray[(alarmVC.indexPath?.row)!].ringTone = ringTone
         }
         
         AlarmData.saveData(timeArray: alarmVC.timeArray)
@@ -135,8 +124,6 @@ class SetAlarmViewController: UIViewController {
         let timeString = dateFormatter.string(from: datePicker.date)
         
         return timeString
-//        delegate?.alarmSet(mode: modeChoice, alarmString:  dateFormatter.string(from: datePicker.date), time: datePicker.date, label: label, isOn: true)
-        //        print(dateFormatter.string(from: datePicker.date))
     }
     @IBAction func deleteAlarm(_ sender: UIButton) {
         alarmVC.timeArray.remove(at: (alarmVC.indexPath?.row)!)
@@ -227,14 +214,21 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             switch indexPath.row {
             case 0:
-                let vc = storyboard?.instantiateViewController(withIdentifier: "StatusTableViewController") as! StatusTableViewController
+                let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: StatusTableViewController.self)) as! StatusTableViewController
                 
                 navigationController?.pushViewController(vc, animated: true)
+            
             case 1:
-                let vc = storyboard?.instantiateViewController(withIdentifier: "LabelViewController") as! LabelViewController
+                let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: LabelViewController.self)) as! LabelViewController
                 vc.delegate = self
                 vc.text = label
                 navigationController?.pushViewController(vc, animated: true)
+              
+            case 2:
+                let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: RingToneTableViewController.self)) as! RingToneTableViewController
+                vc.delegate = self
+                navigationController?.pushViewController(vc, animated: true)
+                
             default:
                 break
             }
@@ -256,9 +250,12 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension SetAlarmViewController: LabelSettingDelegate {
+extension SetAlarmViewController: LabelSettingDelegate, RingToneSelectedDelegate {
     func labelSetting(label: String) {
         self.label = label
     }
     
+    func ringToneSelected(index: Int) {
+        self.ringTone = DataSource.ringTone[index]
+    }
 }

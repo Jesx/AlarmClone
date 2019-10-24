@@ -29,13 +29,19 @@ class LabelViewController: UIViewController {
         textField.text = text
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textField.becomeFirstResponder()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         if let text = textField.text {
             delegate?.labelSetting(label: text)
         }
     }
 }
-
+ // Textfield line setting
 enum LINE_POSITION {
     case LINE_POSITION_TOP
     case LINE_POSITION_BOTTOM

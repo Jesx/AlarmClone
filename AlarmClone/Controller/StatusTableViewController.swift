@@ -8,28 +8,86 @@
 
 import UIKit
 
+protocol SetRepeatDelegate {
+    func setRepeate (day: [String])
+}
+
 class StatusTableViewController: UITableViewController {
+    
+    var repeatStatusArray : [RepeatStatus] = [
+        RepeatStatus(fullName: "Every Sunday", shortName: "Sun", isSelected: false),
+        RepeatStatus(fullName: "Every Monday", shortName: "Mon", isSelected: false),
+        RepeatStatus(fullName: "Every Tuesday", shortName: "Tue", isSelected: false),
+        RepeatStatus(fullName: "Every Wednesday", shortName: "Wed", isSelected: false),
+        RepeatStatus(fullName: "Every Thusday", shortName: "Thu", isSelected: false),
+        RepeatStatus(fullName: "Every Friday", shortName: "Fri", isSelected: false),
+        RepeatStatus(fullName: "Every Sunday", shortName: "Sun", isSelected: false)
+    ]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        navigationItem.title = "Repeat"
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return repeatStatusArray.count
     }
 
+    // MARK: - cellForRowAt
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "StatusCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 18)
+        cell.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = repeatStatusArray[0].fullName
+        case 1:
+            cell.textLabel?.text = repeatStatusArray[1].fullName
+        case 2:
+            cell.textLabel?.text = repeatStatusArray[2].fullName
+        case 3:
+            cell.textLabel?.text = repeatStatusArray[3].fullName
+        case 4:
+            cell.textLabel?.text = repeatStatusArray[4].fullName
+        case 5:
+            cell.textLabel?.text = repeatStatusArray[5].fullName
+        case 6:
+            cell.textLabel?.text = repeatStatusArray[6].fullName
+            
+        default:
+            fatalError()
+        }
+        
+        cell.accessoryType = .none
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if cell.accessoryType == .none {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    
 }

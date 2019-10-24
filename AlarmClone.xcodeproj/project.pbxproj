@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56077ED823619DB400AD72C1 /* RepeatStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077ED723619DB400AD72C1 /* RepeatStatus.swift */; };
 		566FB147235F6609004922CC /* TimeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB146235F6609004922CC /* TimeElement.swift */; };
 		566FB149235FE177004922CC /* SetAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */; };
 		566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */; };
 		566FB15123605B1C004922CC /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB15023605B1C004922CC /* DeleteTableViewCell.swift */; };
 		566FB15323606803004922CC /* StatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB15223606803004922CC /* StatusTableViewController.swift */; };
+		56732F2023618CB2009CB9B7 /* RingToneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56732F1E23618CB2009CB9B7 /* RingToneTableViewCell.swift */; };
+		56732F2123618CB2009CB9B7 /* RingToneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56732F1F23618CB2009CB9B7 /* RingToneTableViewCell.xib */; };
 		5673F600235E943E000B9A8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5673F5FF235E943E000B9A8A /* AppDelegate.swift */; };
 		5673F602235E943E000B9A8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5673F601235E943E000B9A8A /* SceneDelegate.swift */; };
 		5673F604235E943E000B9A8A /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5673F603235E943E000B9A8A /* AlarmViewController.swift */; };
@@ -22,14 +25,18 @@
 		5673F616235EA043000B9A8A /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5673F615235EA043000B9A8A /* SetAlarmViewController.swift */; };
 		56D25A642360B58C00296148 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D25A632360B58C00296148 /* LabelViewController.swift */; };
 		56D25A882361524200296148 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D25A872361524200296148 /* AlarmData.swift */; };
+		56D25A8A23616D3200296148 /* RingToneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D25A8923616D3200296148 /* RingToneTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56077ED723619DB400AD72C1 /* RepeatStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatStatus.swift; sourceTree = "<group>"; };
 		566FB146235F6609004922CC /* TimeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeElement.swift; sourceTree = "<group>"; };
 		566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeTableViewCell.swift; sourceTree = "<group>"; };
 		566FB15023605B1C004922CC /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
 		566FB15223606803004922CC /* StatusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableViewController.swift; sourceTree = "<group>"; };
+		56732F1E23618CB2009CB9B7 /* RingToneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingToneTableViewCell.swift; sourceTree = "<group>"; };
+		56732F1F23618CB2009CB9B7 /* RingToneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RingToneTableViewCell.xib; sourceTree = "<group>"; };
 		5673F5FC235E943E000B9A8A /* AlarmClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarmClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5673F5FF235E943E000B9A8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5673F601235E943E000B9A8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +49,7 @@
 		5673F615235EA043000B9A8A /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
 		56D25A632360B58C00296148 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		56D25A872361524200296148 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
+		56D25A8923616D3200296148 /* RingToneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingToneTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,8 @@
 				566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */,
 				566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */,
 				566FB15023605B1C004922CC /* DeleteTableViewCell.swift */,
+				56732F1E23618CB2009CB9B7 /* RingToneTableViewCell.swift */,
+				56732F1F23618CB2009CB9B7 /* RingToneTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -69,8 +79,9 @@
 		566FB14B235FE980004922CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				566FB146235F6609004922CC /* TimeElement.swift */,
 				56D25A872361524200296148 /* AlarmData.swift */,
+				566FB146235F6609004922CC /* TimeElement.swift */,
+				56077ED723619DB400AD72C1 /* RepeatStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,6 +123,7 @@
 				5673F615235EA043000B9A8A /* SetAlarmViewController.swift */,
 				566FB15223606803004922CC /* StatusTableViewController.swift */,
 				56D25A632360B58C00296148 /* LabelViewController.swift */,
+				56D25A8923616D3200296148 /* RingToneTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -187,6 +199,7 @@
 				5673F60C235E943F000B9A8A /* LaunchScreen.storyboard in Resources */,
 				5673F609235E943F000B9A8A /* Assets.xcassets in Resources */,
 				5673F607235E943E000B9A8A /* Main.storyboard in Resources */,
+				56732F2123618CB2009CB9B7 /* RingToneTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +214,10 @@
 				5673F604235E943E000B9A8A /* AlarmViewController.swift in Sources */,
 				566FB147235F6609004922CC /* TimeElement.swift in Sources */,
 				5673F616235EA043000B9A8A /* SetAlarmViewController.swift in Sources */,
+				56D25A8A23616D3200296148 /* RingToneTableViewController.swift in Sources */,
 				5673F600235E943E000B9A8A /* AppDelegate.swift in Sources */,
+				56732F2023618CB2009CB9B7 /* RingToneTableViewCell.swift in Sources */,
+				56077ED823619DB400AD72C1 /* RepeatStatus.swift in Sources */,
 				5673F602235E943E000B9A8A /* SceneDelegate.swift in Sources */,
 				566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */,
 				5673F614235E9925000B9A8A /* AlarmTableViewCell.swift in Sources */,
