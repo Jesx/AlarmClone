@@ -76,7 +76,6 @@ class SetAlarmViewController: UIViewController {
         let title = modeChoice.title
         navigationItem.title = title
         
-        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -121,7 +120,6 @@ class SetAlarmViewController: UIViewController {
             alarmVC.timeArray[indexPath.row].textLabel = label
             alarmVC.timeArray[indexPath.row].time = time
             alarmVC.timeArray[indexPath.row].ringTone = ringTone
-            
         }
         
         setNotification()
@@ -262,7 +260,7 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
             case 0:
                 let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: StatusTableViewController.self)) as! StatusTableViewController
                 vc.delegate = self
-                vc.day = repeatStatus
+                vc.repeatDay = repeatStatus
                 navigationController?.pushViewController(vc, animated: true)
             
             case 1:
@@ -296,18 +294,23 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 30
     }
-    
-    
 }
 
-extension SetAlarmViewController: LabelSettingDelegate, RingToneSelectedDelegate, SetRepeatDelegate {
+extension SetAlarmViewController: LabelSettingDelegate {
+    
     func labelSetting(label: String) {
         self.label = label
     }
+}
+
+extension SetAlarmViewController: RingToneSelectedDelegate {
     
     func ringToneSelected(index: Int) {
-        self.ringTone = DataSource.ringTone[index]
+        self.ringTone = AlarmDetailDataSource.ringTone[index]
     }
+}
+
+extension SetAlarmViewController: SetRepeatDelegate {
     
     func setRepeate(day: String) {
         self.repeatStatus = day

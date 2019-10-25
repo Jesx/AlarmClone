@@ -15,8 +15,6 @@ class AlarmViewController: UIViewController {
 
     let cellHeight = CGFloat(90)
     
-    var timeText: String?
-    
     var timeArray = [TimeElement]()
     
     @IBOutlet weak var tableView: UITableView!
@@ -53,7 +51,6 @@ class AlarmViewController: UIViewController {
             editBarButton.style = .done
             tableView.separatorInset = .init(top: 0, left: 60, bottom: 0, right: 0)
         }
-//        tableView.setEditing(<#T##editing: Bool##Bool#>, animated: <#T##Bool#>)
     }
     
     @IBAction func addAlarm(_ sender: UIBarButtonItem) {
@@ -138,6 +135,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
 }
 
 

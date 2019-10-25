@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum DataSource {
+enum AlarmDetailDataSource {
     static let ringTone = ["Rain Drops","Silk", "Slow Rise", "Snowman Frozen", "Whistle"]
     
     static let repeatStatus: [(fullName: String, shortName: String, isSelected: Bool)] = [

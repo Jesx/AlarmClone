@@ -8,40 +8,35 @@
 
 import UIKit
 
-protocol SetRepeatDelegate {
-    func setRepeate (day: String)
-}
+
 
 class StatusTableViewController: UITableViewController {
     
-    var repeatStatusArray = DataSource.repeatStatus
+    var repeatStatusArray = AlarmDetailDataSource.repeatStatus
     
-    var delegate: SetRepeatDelegate?
-    var day: String!
-    
+    weak var delegate: SetRepeatDelegate?
+    var repeatDay: String!
     var index: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationItem.title = "Repeat"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        for index in repeatStatusArray {
-            if index.isSelected {
-                if day == "Never" {
-                    day = ""
-                    day.append(index.shortName)
-                } else {
-                    day.append(" " + index.shortName)
-                }
-            }
-        }
+//        for index in repeatStatusArray {
+//            if index.isSelected {
+//                if repeatDay == "Never" {
+//                    repeatDay = ""
+//                    repeatDay.append(index.shortName)
+//                } else {
+//                    repeatDay.append(" " + index.shortName)
+//                }
+//            }
+//        }
 
-        delegate?.setRepeate(day: day)
+        delegate?.setRepeate(day: repeatDay)
     }
 
     // MARK: - Table view data source
@@ -65,10 +60,8 @@ class StatusTableViewController: UITableViewController {
         cell.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         cell.accessoryType = repeatStatusArray[indexPath.row].isSelected ? .checkmark : .none
-        
         cell.textLabel?.text = repeatStatusArray[indexPath.row].fullName
-        
-        cell.accessoryType = .none
+//        cell.accessoryType = .none
         
         return cell
     }

@@ -8,24 +8,18 @@
 
 import UIKit
 
-protocol RingToneSelectedDelegate {
-    func ringToneSelected (index: Int)
-}
-
 class RingToneTableViewController: UITableViewController {
 
-    var ringArray: [(ringTone: String, isSelect: Bool)] = DataSource.ringTone.map { (ringTone: $0, isSelect: false) }
+    var ringArray: [(ringTone: String, isSelect: Bool)] = AlarmDetailDataSource.ringTone.map { (ringTone: $0, isSelect: false) }
     
     var index: Int!
     var ringTone: String!
     
     var cell: RingToneTableViewCell?
-    var delegate: RingToneSelectedDelegate?
+    weak var delegate: RingToneSelectedDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = "Sound"
 
         let nib = UINib(nibName: "RingToneTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "RingToneCell")

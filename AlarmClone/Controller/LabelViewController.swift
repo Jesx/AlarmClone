@@ -8,26 +8,21 @@
 
 import UIKit
 
-protocol LabelSettingDelegate {
-    func labelSetting(label: String)
-}
+
 
 class LabelViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
     
-    var delegate: LabelSettingDelegate?
+    weak var delegate: LabelSettingDelegate?
     var text: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textField.addLine(position: .LINE_POSITION_TOP, color: .gray, width: 0.5)
-        textField.addLine(position: .LINE_POSITION_BOTTOM, color: .gray, width: 0.5)
         textField.setModifyClearButton()
         
         textField.text = text
-        navigationItem.title = "Label"
     }
 
     override func viewDidAppear(_ animated: Bool) {

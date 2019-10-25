@@ -144,20 +144,20 @@
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SetAlarmTableViewCell" id="mXA-8X-y5V" customClass="SetAlarmTableViewCell" customModule="AlarmClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mXA-8X-y5V" id="QXc-J4-WIl">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-pF-zun">
-                                                    <rect key="frame" x="20" y="10" width="44" height="22.5"/>
+                                                    <rect key="frame" x="20" y="10" width="44" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSy-fL-kyA">
-                                                    <rect key="frame" x="362" y="10" width="42" height="22.5"/>
+                                                    <rect key="frame" x="362" y="10" width="42" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -179,20 +179,20 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SnoozeTableViewCell" id="l6y-LD-Wfa" customClass="SnoozeTableViewCell" customModule="AlarmClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="98" width="414" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="97.5" width="414" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l6y-LD-Wfa" id="H8R-tW-pkB">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7er-Se-tlN">
-                                                    <rect key="frame" x="20" y="10" width="44" height="22.5"/>
+                                                    <rect key="frame" x="20" y="10" width="44" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Jd-l6-q09">
-                                                    <rect key="frame" x="345" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="345" y="5.5" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -210,7 +210,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeleteTableViewCell" id="8vo-oV-zP0" customClass="DeleteTableViewCell" customModule="AlarmClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="140.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="139.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8vo-oV-zP0" id="iYi-W5-YM8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -275,7 +275,7 @@
             </objects>
             <point key="canvasLocation" x="3726.0869565217395" y="101.78571428571428"/>
         </scene>
-        <!--Label View Controller-->
+        <!--Label-->
         <scene sceneID="92n-T9-fpi">
             <objects>
                 <viewController storyboardIdentifier="LabelViewController" id="obM-IP-cbu" customClass="LabelViewController" customModule="AlarmClone" customModuleProvider="target" sceneMemberID="viewController">
@@ -303,7 +303,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TPm-Bp-uFU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="MM0-xB-Opo"/>
+                    <navigationItem key="navigationItem" title="Label" id="MM0-xB-Opo"/>
                     <connections>
                         <outlet property="textField" destination="vSf-Xq-7y1" id="eBn-uH-eso"/>
                     </connections>
@@ -312,7 +312,7 @@
             </objects>
             <point key="canvasLocation" x="4899" y="330"/>
         </scene>
-        <!--Ring Tone Table View Controller-->
+        <!--Sound-->
         <scene sceneID="7ep-1T-CdS">
             <objects>
                 <tableViewController storyboardIdentifier="RingToneTableViewController" id="dnw-uJ-d2a" customClass="RingToneTableViewController" customModule="AlarmClone" customModuleProvider="target" sceneMemberID="viewController">
@@ -337,13 +337,13 @@
                             <outlet property="delegate" destination="dnw-uJ-d2a" id="6oO-QI-V23"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="8Ww-5L-1lO"/>
+                    <navigationItem key="navigationItem" title="Sound" id="8Ww-5L-1lO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cih-6F-5aN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4898.5507246376819" y="1014.5089285714286"/>
         </scene>
-        <!--Status Table View Controller-->
+        <!--Repeat-->
         <scene sceneID="npd-Br-4Qc">
             <objects>
                 <tableViewController storyboardIdentifier="StatusTableViewController" id="FKW-Ku-w0f" customClass="StatusTableViewController" customModule="AlarmClone" customModuleProvider="target" sceneMemberID="viewController">
@@ -369,7 +369,7 @@
                             <outlet property="delegate" destination="FKW-Ku-w0f" id="rok-Lm-Hjr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="XI2-yH-8w3"/>
+                    <navigationItem key="navigationItem" title="Repeat" id="XI2-yH-8w3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1s2-DW-58R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

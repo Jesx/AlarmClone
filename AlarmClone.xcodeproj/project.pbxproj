@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		56077EDA2361DA9500AD72C1 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077ED92361DA9500AD72C1 /* ModelData.swift */; };
 		56077EE02361EDB800AD72C1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077EDF2361EDB800AD72C1 /* CustomTextField.swift */; };
+		56077EE22362D6C600AD72C1 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077EE12362D6C600AD72C1 /* Protocol.swift */; };
 		566FB147235F6609004922CC /* TimeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB146235F6609004922CC /* TimeElement.swift */; };
 		566FB149235FE177004922CC /* SetAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */; };
 		566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		56077ED92361DA9500AD72C1 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		56077EDF2361EDB800AD72C1 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		56077EE12362D6C600AD72C1 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		566FB146235F6609004922CC /* TimeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeElement.swift; sourceTree = "<group>"; };
 		566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				56077ED92361DA9500AD72C1 /* ModelData.swift */,
 				56D25A872361524200296148 /* AlarmData.swift */,
 				566FB146235F6609004922CC /* TimeElement.swift */,
+				56077EE12362D6C600AD72C1 /* Protocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				5673F614235E9925000B9A8A /* AlarmTableViewCell.swift in Sources */,
 				566FB15123605B1C004922CC /* DeleteTableViewCell.swift in Sources */,
 				56D25A882361524200296148 /* AlarmData.swift in Sources */,
+				56077EE22362D6C600AD72C1 /* Protocol.swift in Sources */,
 				566FB149235FE177004922CC /* SetAlarmTableViewCell.swift in Sources */,
 				566FB15323606803004922CC /* StatusTableViewController.swift in Sources */,
 			);

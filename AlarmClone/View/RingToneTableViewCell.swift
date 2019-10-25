@@ -11,8 +11,8 @@ import UIKit
 class RingToneTableViewCell: UITableViewCell {
 
     @IBOutlet weak var thisImageView: UIImageView!
-    
     @IBOutlet weak var thisTextLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
