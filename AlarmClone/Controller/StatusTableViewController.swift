@@ -91,7 +91,6 @@ class StatusTableViewController: UITableViewController {
         
         cell.accessoryType = repeatArray[indexPath.row].isSelected ? .checkmark : .none
         cell.textLabel?.text = "Every " + repeatArray[indexPath.row].day
-//        cell.accessoryType = .none
         
         return cell
     }

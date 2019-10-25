@@ -25,7 +25,6 @@ class SetAlarmViewController: UIViewController {
     var ringTone: String!
     var label: String!
     
-    //
     enum Mode {
         case Add, Edit
 
@@ -62,7 +61,7 @@ class SetAlarmViewController: UIViewController {
                     subview.layer.borderWidth = 0.5
                 }
             }
-            //
+            // This line may have a problem
             datePicker.setValue(UIColor.white, forKey: "textColor")
         }
     }
