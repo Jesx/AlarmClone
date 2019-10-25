@@ -194,18 +194,23 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             switch indexPath.row {
-            case 0...2:
+            case 0...3:
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SetAlarmTableViewCell.self), for: indexPath) as! SetAlarmTableViewCell
                 
                 if indexPath.row == 0 {
                     cell.itemLabel.text = "Repeat"
                     cell.statusLabel.text = repeatStatus
+                    cell.accessoryView = cell.tailImageView
+                    
                 } else if indexPath.row == 1 {
                     cell.itemLabel.text = "Label"
                     cell.statusLabel.text = label
+                    cell.accessoryView = cell.tailImageView
+                    
                 } else if indexPath.row == 2 {
                     cell.itemLabel.text = "Sound"
                     cell.statusLabel.text = ringTone
+                    
                 }
                 
                 cell.accessoryView = cell.tailImageView
@@ -214,12 +219,12 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             
             case 3:
-                
+
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SnoozeTableViewCell.self), for: indexPath) as! SnoozeTableViewCell
-                
+
                 cell.itemLabel.text = "Snooze"
                 cell.selectionStyle = .none
-                
+
                 return cell
 
             default:
