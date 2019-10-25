@@ -78,9 +78,17 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=", every day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsi-zc-diw">
+                                                    <rect key="frame" x="65" y="64.5" width="83" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="dsi-zc-diw" firstAttribute="leading" secondItem="XeM-vs-nWM" secondAttribute="trailing" id="APM-wF-zoi"/>
                                                 <constraint firstItem="XeM-vs-nWM" firstAttribute="leading" secondItem="VsK-ee-qU3" secondAttribute="leading" constant="20" id="cwp-xq-Se0"/>
+                                                <constraint firstItem="dsi-zc-diw" firstAttribute="centerY" secondItem="XeM-vs-nWM" secondAttribute="centerY" id="l5Z-Am-Fa5"/>
                                                 <constraint firstAttribute="bottom" secondItem="XeM-vs-nWM" secondAttribute="bottom" constant="5" id="o8n-ud-Mnv"/>
                                                 <constraint firstItem="pNu-ZL-Vyf" firstAttribute="leading" secondItem="VsK-ee-qU3" secondAttribute="leading" constant="20" id="okK-zn-wkr"/>
                                                 <constraint firstItem="pNu-ZL-Vyf" firstAttribute="top" secondItem="VsK-ee-qU3" secondAttribute="top" constant="10" id="v45-Le-Oji"/>
@@ -89,6 +97,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="alarmNameLabel" destination="XeM-vs-nWM" id="Qtq-dn-Dyb"/>
+                                            <outlet property="repeatStatusLabel" destination="dsi-zc-diw" id="SqR-5n-OYL"/>
                                             <outlet property="timeLabel" destination="pNu-ZL-Vyf" id="0EG-Cg-nqL"/>
                                         </connections>
                                     </tableViewCell>
@@ -144,20 +153,20 @@
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SetAlarmTableViewCell" id="mXA-8X-y5V" customClass="SetAlarmTableViewCell" customModule="AlarmClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="42"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="42.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mXA-8X-y5V" id="QXc-J4-WIl">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-pF-zun">
-                                                    <rect key="frame" x="20" y="10" width="44" height="22"/>
+                                                    <rect key="frame" x="20" y="10" width="44" height="22.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSy-fL-kyA">
-                                                    <rect key="frame" x="362" y="10" width="42" height="22"/>
+                                                    <rect key="frame" x="362" y="10" width="42" height="22.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -179,20 +188,20 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SnoozeTableViewCell" id="l6y-LD-Wfa" customClass="SnoozeTableViewCell" customModule="AlarmClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="97.5" width="414" height="42"/>
+                                        <rect key="frame" x="0.0" y="98" width="414" height="42.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l6y-LD-Wfa" id="H8R-tW-pkB">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7er-Se-tlN">
-                                                    <rect key="frame" x="20" y="10" width="44" height="22"/>
+                                                    <rect key="frame" x="20" y="10" width="44" height="22.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Jd-l6-q09">
-                                                    <rect key="frame" x="345" y="5.5" width="51" height="31"/>
+                                                    <rect key="frame" x="345" y="6" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -210,7 +219,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeleteTableViewCell" id="8vo-oV-zP0" customClass="DeleteTableViewCell" customModule="AlarmClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="139.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="140.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8vo-oV-zP0" id="iYi-W5-YM8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>

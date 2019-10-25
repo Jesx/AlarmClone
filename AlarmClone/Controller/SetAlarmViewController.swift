@@ -115,14 +115,16 @@ class SetAlarmViewController: UIViewController {
         case .Add:
             let timeElement = TimeElement(timeString: timeString, time: time, textLabel: label, ringTone: ringTone, repeatStatus: repeatStatus, isOn: true)
             alarmVC.timeArray.append(timeElement)
+            
         case .Edit:
             alarmVC.timeArray[indexPath.row].timeString = timeString
             alarmVC.timeArray[indexPath.row].textLabel = label
             alarmVC.timeArray[indexPath.row].time = time
             alarmVC.timeArray[indexPath.row].ringTone = ringTone
+            alarmVC.timeArray[indexPath.row].repeatStatus = repeatStatus
         }
         
-        setNotification()
+//        setNotification()
         AlarmData.saveData(timeArray: alarmVC.timeArray)
         alarmVC.timeArray = AlarmData.loadData()
         alarmVC.tableView.reloadData()

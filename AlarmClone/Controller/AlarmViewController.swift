@@ -7,7 +7,8 @@
 //
 
 // Switch button function
-// Repeat
+// notification
+// play ring
 
 import UIKit
 
@@ -76,12 +77,11 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AlarmTableViewCell.self), for: indexPath) as! AlarmTableViewCell
         
         cell.timeLabel.text = timeArray[indexPath.row].timeString
-        
+  
+        // Set the custom font in string
         let timeTextCount = timeArray[indexPath.row].timeString.count
-        //
         let attributedString = NSMutableAttributedString.init(string: cell.timeLabel.text!)
         
-        // Set the custom font in string
         attributedString.setAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30)],
                                  range: NSMakeRange(timeTextCount - 2, 2))
         
@@ -94,7 +94,17 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         cell.editingAccessoryView = cell.tailImageView
         
         cell.alarmNameLabel.text = timeArray[indexPath.row].textLabel
-
+        
+        if timeArray[indexPath.row].repeatStatus == AlarmDetailDataSource.repeatAdditionalArray[0] {
+            cell.repeatStatusLabel.text = ""
+        } else if timeArray[indexPath.row].repeatStatus == AlarmDetailDataSource.repeatAdditionalArray[1] {
+            cell.repeatStatusLabel.text = ", " + timeArray[indexPath.row].repeatStatus.lowercased()
+        } else if timeArray[indexPath.row].repeatStatus == AlarmDetailDataSource.repeatAdditionalArray[2] {
+            cell.repeatStatusLabel.text = ", every " + timeArray[indexPath.row].repeatStatus.lowercased()
+        } else {
+            cell.repeatStatusLabel.text = ", " + timeArray[indexPath.row].repeatStatus
+        }
+        
         return cell
     }
     

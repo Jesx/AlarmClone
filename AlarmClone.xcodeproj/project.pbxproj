@@ -70,6 +70,7 @@
 		566FB14A235FE1A2004922CC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5673F605235E943E000B9A8A /* Main.storyboard */,
 				5673F613235E9925000B9A8A /* AlarmTableViewCell.swift */,
 				566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */,
 				566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */,
@@ -111,7 +112,6 @@
 		5673F5FE235E943E000B9A8A /* AlarmClone */ = {
 			isa = PBXGroup;
 			children = (
-				5673F605235E943E000B9A8A /* Main.storyboard */,
 				566FB14B235FE980004922CC /* Model */,
 				566FB14A235FE1A2004922CC /* View */,
 				5673F617235EAECF000B9A8A /* Controller */,

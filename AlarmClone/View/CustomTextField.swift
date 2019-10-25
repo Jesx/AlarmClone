@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @IBDesignable
-open class customUITextField: UITextField {
+class customUITextField: UITextField {
 
     func setTopBottomLine() {
         let borderWidth = CGFloat(0.5)
@@ -48,27 +48,31 @@ open class customUITextField: UITextField {
         return bounds.inset(by: padding)
     }
     
-    let rightViewPadding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -350)
+    let rightViewPadding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
     
-    override open func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+    override open func leftViewRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: rightViewPadding)
     }
+//    override open func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+//        return bounds.inset(by: rightViewPadding)
+//    }
+
 }
 
 // MARK: - Add custom clear button
 extension UITextField {
-    
+
     func setModifyClearButton() {
         let clearButton = UIButton(type: .custom)
         clearButton.setImage(UIImage(named: "clear"), for: .normal)
         clearButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         clearButton.contentMode = .scaleAspectFit
         clearButton.addTarget(self, action: #selector(UITextField.clear(sender:)), for: .touchUpInside)
-        
+
         self.rightView = clearButton
         self.rightViewMode = .whileEditing
     }
-    
+
     // When press button clear textfield
     @objc func clear(sender : AnyObject) {
         self.text = ""

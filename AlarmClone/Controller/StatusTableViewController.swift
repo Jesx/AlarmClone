@@ -8,11 +8,11 @@
 
 import UIKit
 
-
-
 class StatusTableViewController: UITableViewController {
     
-    var repeatStatusArray = AlarmDetailDataSource.repeatStatus
+    var repeatArray: [(day: String, isSelected: Bool)] = AlarmDetailDataSource.repeatArray.map { (day: $0, isSelected: false) }
+    
+    var repeatStatusArray = [String]()
     
     weak var delegate: SetRepeatDelegate?
     var repeatDay: String!
@@ -20,23 +20,53 @@ class StatusTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadRepeatStatus()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-//        for index in repeatStatusArray {
-//            if index.isSelected {
-//                if repeatDay == "Never" {
-//                    repeatDay = ""
-//                    repeatDay.append(index.shortName)
-//                } else {
-//                    repeatDay.append(" " + index.shortName)
-//                }
-//            }
-//        }
-
+        saveRepeatStatus()
         delegate?.setRepeate(day: repeatDay)
+    }
+    
+    func saveRepeatStatus() {
+        
+        repeatStatusArray = [String]()
+        for day in repeatArray {
+            if day.isSelected {
+                let dayShortName = day.day.prefix(3)
+                repeatStatusArray.append(String(dayShortName))
+            }
+        }
+        
+        if repeatStatusArray.count == 0 {
+            repeatDay = AlarmDetailDataSource.repeatAdditionalArray[0]
+        } else if repeatStatusArray.count == 7 {
+            repeatDay = AlarmDetailDataSource.repeatAdditionalArray[1]
+        } else {
+            if repeatStatusArray[0] == repeatArray[0].day.prefix(3) && repeatStatusArray[1] == repeatArray[6].day.prefix(3) {
+                repeatDay = AlarmDetailDataSource.repeatAdditionalArray[2]
+            } else {
+                for index in 0..<repeatStatusArray.count {
+                    if index == 0 {
+                        repeatDay = repeatStatusArray[index]
+                    } else {
+                        repeatDay += " " + repeatStatusArray[index]
+                    }
+                }
+            }
+        }
+        
+        AlarmData.saveRepeatStatus(repeatStatusArray: repeatStatusArray)
+    }
+    
+    func loadRepeatStatus() {
+        repeatStatusArray = AlarmData.loadRepeatStatus()
+        for day in repeatStatusArray {
+            index = repeatArray.firstIndex(where: { $0.day.prefix(3) == day })
+            repeatArray[Int(index)].isSelected = true
+        }
     }
 
     // MARK: - Table view data source
@@ -48,7 +78,7 @@ class StatusTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return repeatStatusArray.count
+        return repeatArray.count
     }
 
     // MARK: - cellForRowAt
@@ -59,8 +89,8 @@ class StatusTableViewController: UITableViewController {
         cell.textLabel?.font = UIFont.systemFont(ofSize: 18)
         cell.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
-        cell.accessoryType = repeatStatusArray[indexPath.row].isSelected ? .checkmark : .none
-        cell.textLabel?.text = repeatStatusArray[indexPath.row].fullName
+        cell.accessoryType = repeatArray[indexPath.row].isSelected ? .checkmark : .none
+        cell.textLabel?.text = "Every " + repeatArray[indexPath.row].day
 //        cell.accessoryType = .none
         
         return cell
@@ -71,12 +101,13 @@ class StatusTableViewController: UITableViewController {
             
             if cell.accessoryType == .none {
                 cell.accessoryType = .checkmark
-                repeatStatusArray[indexPath.row].isSelected = true
+                repeatArray[indexPath.row].isSelected = true
             } else {
                 cell.accessoryType = .none
-                repeatStatusArray[indexPath.row].isSelected = false
+                repeatArray[indexPath.row].isSelected = false
             }
         }
+    
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

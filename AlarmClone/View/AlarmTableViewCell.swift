@@ -12,6 +12,7 @@ class AlarmTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var alarmNameLabel: UILabel!
+    @IBOutlet weak var repeatStatusLabel: UILabel!
     
     let onOffSwitch = UISwitch()
     let tailImageView = UIImageView(image: UIImage(named: "Forward_Filled"))
