@@ -48,14 +48,12 @@ class customUITextField: UITextField {
         return bounds.inset(by: padding)
     }
     
-    let rightViewPadding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
-    
-    override open func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+    override open func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        //self.frame.size.width/2 - 10
+        
+        let rightViewPadding = UIEdgeInsets(top: 0, left: self.frame.size.width - 30, bottom: 0, right: 0)
         return bounds.inset(by: rightViewPadding)
     }
-//    override open func rightViewRect(forBounds bounds: CGRect) -> CGRect {
-//        return bounds.inset(by: rightViewPadding)
-//    }
 
 }
 

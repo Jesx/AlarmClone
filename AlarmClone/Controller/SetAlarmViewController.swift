@@ -193,7 +193,7 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             switch indexPath.row {
-            case 0...3:
+            case 0...2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SetAlarmTableViewCell.self), for: indexPath) as! SetAlarmTableViewCell
                 
                 if indexPath.row == 0 {
