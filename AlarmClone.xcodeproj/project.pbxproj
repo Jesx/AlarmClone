@@ -13,7 +13,6 @@
 		566FB147235F6609004922CC /* TimeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB146235F6609004922CC /* TimeElement.swift */; };
 		566FB149235FE177004922CC /* SetAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */; };
 		566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */; };
-		566FB15123605B1C004922CC /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB15023605B1C004922CC /* DeleteTableViewCell.swift */; };
 		566FB15323606803004922CC /* StatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB15223606803004922CC /* StatusTableViewController.swift */; };
 		56732F2023618CB2009CB9B7 /* RingToneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56732F1E23618CB2009CB9B7 /* RingToneTableViewCell.swift */; };
 		56732F2123618CB2009CB9B7 /* RingToneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56732F1F23618CB2009CB9B7 /* RingToneTableViewCell.xib */; };
@@ -37,7 +36,6 @@
 		566FB146235F6609004922CC /* TimeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeElement.swift; sourceTree = "<group>"; };
 		566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeTableViewCell.swift; sourceTree = "<group>"; };
-		566FB15023605B1C004922CC /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
 		566FB15223606803004922CC /* StatusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableViewController.swift; sourceTree = "<group>"; };
 		56732F1E23618CB2009CB9B7 /* RingToneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingToneTableViewCell.swift; sourceTree = "<group>"; };
 		56732F1F23618CB2009CB9B7 /* RingToneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RingToneTableViewCell.xib; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 				5673F613235E9925000B9A8A /* AlarmTableViewCell.swift */,
 				566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */,
 				566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */,
-				566FB15023605B1C004922CC /* DeleteTableViewCell.swift */,
 				56732F1E23618CB2009CB9B7 /* RingToneTableViewCell.swift */,
 				56732F1F23618CB2009CB9B7 /* RingToneTableViewCell.xib */,
 				56077EDF2361EDB800AD72C1 /* CustomTextField.swift */,
@@ -228,7 +225,6 @@
 				5673F602235E943E000B9A8A /* SceneDelegate.swift in Sources */,
 				566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */,
 				5673F614235E9925000B9A8A /* AlarmTableViewCell.swift in Sources */,
-				566FB15123605B1C004922CC /* DeleteTableViewCell.swift in Sources */,
 				56D25A882361524200296148 /* AlarmData.swift in Sources */,
 				56077EE22362D6C600AD72C1 /* Protocol.swift in Sources */,
 				566FB149235FE177004922CC /* SetAlarmTableViewCell.swift in Sources */,

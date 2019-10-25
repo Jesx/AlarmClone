@@ -191,38 +191,22 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        var cell: UITableViewCell
-        
         switch indexPath.section {
         case 0:
             switch indexPath.row {
-            case 0:
+            case 0...2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SetAlarmTableViewCell.self), for: indexPath) as! SetAlarmTableViewCell
                 
-                cell.itemLabel.text = "Repeat"
-                cell.statusLabel.text = repeatStatus
-                
-                cell.accessoryView = cell.tailImageView
-                cell.selectionStyle = .none
-                
-                return cell
-            
-            case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SetAlarmTableViewCell.self), for: indexPath) as! SetAlarmTableViewCell
-                
-                cell.itemLabel.text = "Label"
-                cell.statusLabel.text = label
-                
-                cell.accessoryView = cell.tailImageView
-                cell.selectionStyle = .none
-                
-                return cell
-            
-            case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SetAlarmTableViewCell.self), for: indexPath) as! SetAlarmTableViewCell
-                
-                cell.itemLabel.text = "Sound"
-                cell.statusLabel.text = ringTone
+                if indexPath.row == 0 {
+                    cell.itemLabel.text = "Repeat"
+                    cell.statusLabel.text = repeatStatus
+                } else if indexPath.row == 1 {
+                    cell.itemLabel.text = "Label"
+                    cell.statusLabel.text = label
+                } else if indexPath.row == 2 {
+                    cell.itemLabel.text = "Sound"
+                    cell.statusLabel.text = ringTone
+                }
                 
                 cell.accessoryView = cell.tailImageView
                 cell.selectionStyle = .none
@@ -243,7 +227,8 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
             }
             case 1:
             
-                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DeleteTableViewCell.self), for: indexPath) as! DeleteTableViewCell
+                let cellIndentifier = "DeleteTableViewCell"
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier, for: indexPath)
                 
                 cell.selectionStyle = .none
             
