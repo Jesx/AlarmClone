@@ -112,7 +112,7 @@
 				566FB14B235FE980004922CC /* Model */,
 				566FB14A235FE1A2004922CC /* View */,
 				5673F617235EAECF000B9A8A /* Controller */,
-				5673F618235EAEF8000B9A8A /* Support Files */,
+				5673F618235EAEF8000B9A8A /* Supporting Files */,
 				5673F608235E943F000B9A8A /* Assets.xcassets */,
 				5673F60D235E943F000B9A8A /* Info.plist */,
 			);
@@ -131,14 +131,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		5673F618235EAEF8000B9A8A /* Support Files */ = {
+		5673F618235EAEF8000B9A8A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				5673F5FF235E943E000B9A8A /* AppDelegate.swift */,
 				5673F601235E943E000B9A8A /* SceneDelegate.swift */,
 				5673F60A235E943F000B9A8A /* LaunchScreen.storyboard */,
 			);
-			path = "Support Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -16,21 +16,21 @@ class SetAlarmViewController: UIViewController {
     let cellHeight = CGFloat(50)
     
     var alarmVC: AlarmViewController!
-
-//    let defaults = UserDefaults.standard
+    var indexPath: IndexPath!
     
-    var modeChoice = 0
-    var time: String?
+    var modeChoice = Mode.Add
+    var timeString: String?
     
     var repeatStatus: String!
     var ringTone: String!
     var label: String!
     
-    enum Mode: Int {
-        case Add = 0, Edit = 1
+    //
+    enum Mode {
+        case Add, Edit
 
         var title: String {
-            switch  self {
+            switch self {
             case .Add: return "Add Alarm"
             case .Edit: return "Edit Alarm"
             }
@@ -43,7 +43,7 @@ class SetAlarmViewController: UIViewController {
         
         datePicker.datePickerMode = .time
         
-        if let date = dateFormatter.date(from: time ?? "") {
+        if let date = dateFormatter.date(from: timeString ?? "") {
             datePicker.setDate(date, animated: true)
         }
     }
@@ -62,7 +62,7 @@ class SetAlarmViewController: UIViewController {
                     subview.layer.borderWidth = 0.5
                 }
             }
-            
+            //
             datePicker.setValue(UIColor.white, forKey: "textColor")
         }
     }
@@ -73,22 +73,25 @@ class SetAlarmViewController: UIViewController {
         datePickerSetting()
         datePickerColorSetting()
         
-        // Set Navigation Title
-        navigationItem.title = modeChoice == 0 ? Mode.Add.title : Mode.Edit.title
+        let title = modeChoice.title
+        navigationItem.title = title
+        
         
         tableView.delegate = self
         tableView.dataSource = self
         
         alarmVC.timeArray = AlarmData.loadData()
         
-        if modeChoice == 0 {
+        //
+        switch modeChoice {
+        case .Add:
             ringTone = "Slow Rise"
             label = "Alarm"
             repeatStatus = "Never"
-        } else {
-            ringTone = alarmVC.timeArray[(alarmVC.indexPath?.row)!].ringTone
-            label = alarmVC.timeArray[(alarmVC.indexPath?.row)!].textLabel
-            repeatStatus = alarmVC.timeArray[(alarmVC.indexPath?.row)!].repeatStatus
+        case .Edit:
+            ringTone = alarmVC.timeArray[indexPath.row].ringTone
+            label = alarmVC.timeArray[indexPath.row].textLabel
+            repeatStatus = alarmVC.timeArray[indexPath.row].repeatStatus
         }
         
         tableView.reloadData()
@@ -108,24 +111,20 @@ class SetAlarmViewController: UIViewController {
         let timeString = changeDateToString()
         let time = datePicker.date
         
-        if modeChoice == 0 {
-            
+        //
+        switch modeChoice {
+        case .Add:
             let timeElement = TimeElement(timeString: timeString, time: time, textLabel: label, ringTone: ringTone, repeatStatus: repeatStatus, isOn: true)
             alarmVC.timeArray.append(timeElement)
+        case .Edit:
+            alarmVC.timeArray[indexPath.row].timeString = timeString
+            alarmVC.timeArray[indexPath.row].textLabel = label
+            alarmVC.timeArray[indexPath.row].time = time
+            alarmVC.timeArray[indexPath.row].ringTone = ringTone
             
-            setNotification()
-            
-        } else {
-
-            let index = (alarmVC.indexPath?.row)!
-            alarmVC.timeArray[index].timeString = timeString
-            alarmVC.timeArray[index].textLabel = label
-            alarmVC.timeArray[index].time = time
-            alarmVC.timeArray[index].ringTone = ringTone
-            
-            setNotification()
         }
         
+        setNotification()
         AlarmData.saveData(timeArray: alarmVC.timeArray)
         alarmVC.timeArray = AlarmData.loadData()
         alarmVC.tableView.reloadData()
@@ -133,7 +132,6 @@ class SetAlarmViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    
     func changeDateToString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mma"
@@ -143,7 +141,7 @@ class SetAlarmViewController: UIViewController {
     }
     
     @IBAction func deleteAlarm(_ sender: UIButton) {
-        alarmVC.timeArray.remove(at: (alarmVC.indexPath?.row)!)
+        alarmVC.timeArray.remove(at: indexPath.row)
         AlarmData.saveData(timeArray: alarmVC.timeArray)
         alarmVC.tableView.reloadData()
         dismiss(animated: true, completion: nil)
@@ -156,13 +154,12 @@ class SetAlarmViewController: UIViewController {
     
         var notificationLabel = ""
         var settingTime = Date()
-        if modeChoice == 0 {
+        if modeChoice == .Add {
             notificationLabel = self.label
             settingTime = datePicker.date
         } else {
-            let index = (alarmVC.indexPath?.row)!
-            notificationLabel = alarmVC.timeArray[index].textLabel
-            settingTime = alarmVC.timeArray[index].time
+            notificationLabel = alarmVC.timeArray[indexPath.row].textLabel
+            settingTime = alarmVC.timeArray[indexPath.row].time
         }
         
         content.body = "This is the \(notificationLabel) notificaion."
@@ -184,7 +181,7 @@ class SetAlarmViewController: UIViewController {
 extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return modeChoice == 0 ? 1 : 2
+        return modeChoice == .Add ? 1 : 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -193,6 +190,8 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+//        var cell: UITableViewCell
         
         switch indexPath.section {
         case 0:
@@ -253,7 +252,7 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             fatalError()
         }
-        
+
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

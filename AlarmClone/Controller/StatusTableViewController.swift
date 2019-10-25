@@ -25,7 +25,6 @@ class StatusTableViewController: UITableViewController {
         super.viewDidLoad()
 
         navigationItem.title = "Repeat"
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,25 +66,7 @@ class StatusTableViewController: UITableViewController {
         
         cell.accessoryType = repeatStatusArray[indexPath.row].isSelected ? .checkmark : .none
         
-        switch indexPath.row {
-        case 0:
-            cell.textLabel?.text = repeatStatusArray[0].fullName
-        case 1:
-            cell.textLabel?.text = repeatStatusArray[1].fullName
-        case 2:
-            cell.textLabel?.text = repeatStatusArray[2].fullName
-        case 3:
-            cell.textLabel?.text = repeatStatusArray[3].fullName
-        case 4:
-            cell.textLabel?.text = repeatStatusArray[4].fullName
-        case 5:
-            cell.textLabel?.text = repeatStatusArray[5].fullName
-        case 6:
-            cell.textLabel?.text = repeatStatusArray[6].fullName
-            
-        default:
-            fatalError()
-        }
+        cell.textLabel?.text = repeatStatusArray[indexPath.row].fullName
         
         cell.accessoryType = .none
         

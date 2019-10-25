@@ -16,7 +16,6 @@ class AlarmViewController: UIViewController {
     let cellHeight = CGFloat(90)
     
     var timeText: String?
-    var indexPath: IndexPath?
     
     var timeArray = [TimeElement]()
     
@@ -54,6 +53,7 @@ class AlarmViewController: UIViewController {
             editBarButton.style = .done
             tableView.separatorInset = .init(top: 0, left: 60, bottom: 0, right: 0)
         }
+//        tableView.setEditing(<#T##editing: Bool##Bool#>, animated: <#T##Bool#>)
     }
     
     @IBAction func addAlarm(_ sender: UIBarButtonItem) {
@@ -62,7 +62,7 @@ class AlarmViewController: UIViewController {
         let setAlarmVC = (naviController.viewControllers.first as! SetAlarmViewController)
         
         setAlarmVC.alarmVC = self
-        setAlarmVC.modeChoice = 0
+        setAlarmVC.modeChoice = .Add
         
         present(naviController, animated: true, completion: nil)
     }
@@ -81,6 +81,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         cell.timeLabel.text = timeArray[indexPath.row].timeString
         
         let timeTextCount = timeArray[indexPath.row].timeString.count
+        //
         let attributedString = NSMutableAttributedString.init(string: cell.timeLabel.text!)
         
         // Set the custom font in string
@@ -112,12 +113,11 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
             let setAlarmVC = (naviController.viewControllers.first as! SetAlarmViewController)
             
             setAlarmVC.alarmVC = self
-            setAlarmVC.modeChoice = 1
+            setAlarmVC.modeChoice = .Edit
             
-            setAlarmVC.time = timeArray[indexPath.row].timeString
-            
-            self.indexPath = indexPath
-            
+            setAlarmVC.timeString = timeArray[indexPath.row].timeString
+            setAlarmVC.indexPath = indexPath
+
             present(naviController, animated: true) {
                 tableView.isEditing = false
                 self.editBarButton.title = "Edit"
@@ -138,7 +138,6 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
 }
 
 

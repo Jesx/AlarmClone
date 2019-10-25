@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol RingToneSelectedDelegate {
     func ringToneSelected (index: Int)
 }
