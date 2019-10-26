@@ -125,7 +125,7 @@ class SetAlarmViewController: UIViewController {
         
         alarmVC.timeArray.sort {  $0.time.compare($1.time) == .orderedAscending }
         
-//        setNotification()
+        setNotification()
         AlarmData.saveData(timeArray: alarmVC.timeArray)
         alarmVC.timeArray = AlarmData.loadData()
         alarmVC.tableView.reloadData()
@@ -152,20 +152,22 @@ class SetAlarmViewController: UIViewController {
         
         let content = UNMutableNotificationContent()
         content.title = "Alarm Notification"
-    
+        
         var notificationLabel = ""
         var settingTime = Date()
-        if modeChoice == .Add {
+        
+        switch modeChoice {
+        case .Add:
             notificationLabel = self.label
             settingTime = datePicker.date
-        } else {
+        case .Edit:
             notificationLabel = alarmVC.timeArray[indexPath.row].textLabel
             settingTime = alarmVC.timeArray[indexPath.row].time
+            
         }
         
         content.body = "This is the \(notificationLabel) notificaion."
-        content.badge = 1
-        content.sound = UNNotificationSound.default
+        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue:  "Ripples.mp3"))
         
         let triggerTime = Calendar.current.dateComponents([.hour,.minute], from: settingTime)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: true)
@@ -299,7 +301,7 @@ extension SetAlarmViewController: LabelSettingDelegate {
 extension SetAlarmViewController: RingToneSelectedDelegate {
     
     func ringToneSelected(index: Int) {
-        self.ringTone = AlarmDetailDataSource.ringTone[index]
+        self.ringTone = ModelData.ringTone[index]
     }
 }
 

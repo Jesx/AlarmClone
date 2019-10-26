@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // 在程式一啟動即詢問使用者是否接受圖文(alert)、聲音(sound)、數字(badge)三種類型的通知
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge, .carPlay], completionHandler: { (granted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound, .carPlay], completionHandler: { (granted, error) in
             if granted {
                 print("Allowed.")
             } else {
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         })
         
-        // 讓通知能在前景顯示
+        // Showing notification at foreground
         UNUserNotificationCenter.current().delegate = self
         
         return true

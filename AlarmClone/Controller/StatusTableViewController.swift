@@ -10,7 +10,7 @@ import UIKit
 
 class StatusTableViewController: UITableViewController {
     
-    var repeatArray: [(day: String, isSelected: Bool)] = AlarmDetailDataSource.repeatArray.map { (day: $0, isSelected: false) }
+    var repeatArray: [(day: String, isSelected: Bool)] = ModelData.repeatArray.map { (day: $0, isSelected: false) }
     
     var repeatStatusArray = [String]()
     
@@ -41,18 +41,18 @@ class StatusTableViewController: UITableViewController {
         }
         
         if repeatStatusArray.count == 0 {
-            repeatDay = AlarmDetailDataSource.repeatAdditionalArray[0]
+            repeatDay = ModelData.repeatAdditionalArray[0]
         } else if repeatStatusArray.count == 7 {
-            repeatDay = AlarmDetailDataSource.repeatAdditionalArray[1]
+            repeatDay = ModelData.repeatAdditionalArray[1]
         } else {
             if repeatStatusArray[0] == repeatArray[0].day.prefix(3) && repeatStatusArray[1] == repeatArray[6].day.prefix(3) {
-                repeatDay = AlarmDetailDataSource.repeatAdditionalArray[2]
+                repeatDay = ModelData.repeatAdditionalArray[2]
             } else {
                 for index in 0..<repeatStatusArray.count {
                     if index == 0 {
                         repeatDay = repeatStatusArray[index]
                     } else {
-                        repeatDay += " " + repeatStatusArray[index]
+                        repeatDay += " \(repeatStatusArray[index])"
                     }
                 }
             }
@@ -90,7 +90,7 @@ class StatusTableViewController: UITableViewController {
         cell.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         cell.accessoryType = repeatArray[indexPath.row].isSelected ? .checkmark : .none
-        cell.textLabel?.text = "Every " + repeatArray[indexPath.row].day
+        cell.textLabel?.text = "Every \(repeatArray[indexPath.row].day)"
         
         return cell
     }

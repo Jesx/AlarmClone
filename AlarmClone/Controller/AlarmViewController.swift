@@ -95,11 +95,11 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.alarmNameLabel.text = timeArray[indexPath.row].textLabel
         
-        if timeArray[indexPath.row].repeatStatus == AlarmDetailDataSource.repeatAdditionalArray[0] {
+        if timeArray[indexPath.row].repeatStatus == ModelData.repeatAdditionalArray[0] {
             cell.repeatStatusLabel.text = ""
-        } else if timeArray[indexPath.row].repeatStatus == AlarmDetailDataSource.repeatAdditionalArray[1] {
+        } else if timeArray[indexPath.row].repeatStatus == ModelData.repeatAdditionalArray[1] {
             cell.repeatStatusLabel.text = ", " + timeArray[indexPath.row].repeatStatus.lowercased()
-        } else if timeArray[indexPath.row].repeatStatus == AlarmDetailDataSource.repeatAdditionalArray[2] {
+        } else if timeArray[indexPath.row].repeatStatus == ModelData.repeatAdditionalArray[2] {
             cell.repeatStatusLabel.text = ", every " + timeArray[indexPath.row].repeatStatus.lowercased()
         } else {
             cell.repeatStatusLabel.text = ", " + timeArray[indexPath.row].repeatStatus

@@ -8,8 +8,11 @@
 
 import Foundation
 
-enum AlarmDetailDataSource {
-    static let ringTone = ["Rain Drops","Silk", "Slow Rise", "Snowman Frozen", "Whistle"]
+enum ModelData {
+    static let ringTone = [
+        "Apex","Beacon", "Bulletin", "Hillside", "Radar",
+        "Reflection","Ripples", "Silk", "Slow Rise", "Waves"
+    ]
     
     static let repeatArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thusday", "Friday", "Saturday"]
     

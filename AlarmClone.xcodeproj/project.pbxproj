@@ -10,6 +10,17 @@
 		56077EDA2361DA9500AD72C1 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077ED92361DA9500AD72C1 /* ModelData.swift */; };
 		56077EE02361EDB800AD72C1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077EDF2361EDB800AD72C1 /* CustomTextField.swift */; };
 		56077EE22362D6C600AD72C1 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077EE12362D6C600AD72C1 /* Protocol.swift */; };
+		560FFFD123643F7000633DA4 /* beacon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFC723643F6F00633DA4 /* beacon.mp3 */; };
+		560FFFD223643F7000633DA4 /* Ripples.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFC823643F6F00633DA4 /* Ripples.mp3 */; };
+		560FFFD323643F7000633DA4 /* Hillside.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFC923643F6F00633DA4 /* Hillside.mp3 */; };
+		560FFFD423643F7000633DA4 /* Radar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFCA23643F6F00633DA4 /* Radar.mp3 */; };
+		560FFFD523643F7000633DA4 /* Silk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFCB23643F6F00633DA4 /* Silk.mp3 */; };
+		560FFFD623643F7000633DA4 /* Apex.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFCC23643F6F00633DA4 /* Apex.mp3 */; };
+		560FFFD723643F7000633DA4 /* Bulletin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFCD23643F6F00633DA4 /* Bulletin.mp3 */; };
+		560FFFD823643F7000633DA4 /* Waves.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFCE23643F7000633DA4 /* Waves.mp3 */; };
+		560FFFD923643F7000633DA4 /* Slow Rise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFCF23643F7000633DA4 /* Slow Rise.mp3 */; };
+		560FFFDA23643F7000633DA4 /* Reflection.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFD023643F7000633DA4 /* Reflection.mp3 */; };
+		560FFFDE2364400100633DA4 /* NotificationPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560FFFDD2364400100633DA4 /* NotificationPush.swift */; };
 		566FB147235F6609004922CC /* TimeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB146235F6609004922CC /* TimeElement.swift */; };
 		566FB149235FE177004922CC /* SetAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */; };
 		566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */; };
@@ -33,6 +44,17 @@
 		56077ED92361DA9500AD72C1 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		56077EDF2361EDB800AD72C1 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		56077EE12362D6C600AD72C1 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		560FFFC723643F6F00633DA4 /* beacon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beacon.mp3; sourceTree = "<group>"; };
+		560FFFC823643F6F00633DA4 /* Ripples.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ripples.mp3; sourceTree = "<group>"; };
+		560FFFC923643F6F00633DA4 /* Hillside.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Hillside.mp3; sourceTree = "<group>"; };
+		560FFFCA23643F6F00633DA4 /* Radar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Radar.mp3; sourceTree = "<group>"; };
+		560FFFCB23643F6F00633DA4 /* Silk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Silk.mp3; sourceTree = "<group>"; };
+		560FFFCC23643F6F00633DA4 /* Apex.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Apex.mp3; sourceTree = "<group>"; };
+		560FFFCD23643F6F00633DA4 /* Bulletin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bulletin.mp3; sourceTree = "<group>"; };
+		560FFFCE23643F7000633DA4 /* Waves.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Waves.mp3; sourceTree = "<group>"; };
+		560FFFCF23643F7000633DA4 /* Slow Rise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Slow Rise.mp3"; sourceTree = "<group>"; };
+		560FFFD023643F7000633DA4 /* Reflection.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Reflection.mp3; sourceTree = "<group>"; };
+		560FFFDD2364400100633DA4 /* NotificationPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationPush.swift; path = AlarmClone/Model/NotificationPush.swift; sourceTree = SOURCE_ROOT; };
 		566FB146235F6609004922CC /* TimeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeElement.swift; sourceTree = "<group>"; };
 		566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeTableViewCell.swift; sourceTree = "<group>"; };
@@ -65,6 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		560FFFAE23643A5400633DA4 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				560FFFCC23643F6F00633DA4 /* Apex.mp3 */,
+				560FFFC723643F6F00633DA4 /* beacon.mp3 */,
+				560FFFCD23643F6F00633DA4 /* Bulletin.mp3 */,
+				560FFFC923643F6F00633DA4 /* Hillside.mp3 */,
+				560FFFCA23643F6F00633DA4 /* Radar.mp3 */,
+				560FFFD023643F7000633DA4 /* Reflection.mp3 */,
+				560FFFC823643F6F00633DA4 /* Ripples.mp3 */,
+				560FFFCB23643F6F00633DA4 /* Silk.mp3 */,
+				560FFFCF23643F7000633DA4 /* Slow Rise.mp3 */,
+				560FFFCE23643F7000633DA4 /* Waves.mp3 */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		566FB14A235FE1A2004922CC /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +125,7 @@
 				56D25A872361524200296148 /* AlarmData.swift */,
 				566FB146235F6609004922CC /* TimeElement.swift */,
 				56077EE12362D6C600AD72C1 /* Protocol.swift */,
+				560FFFDD2364400100633DA4 /* NotificationPush.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +149,7 @@
 		5673F5FE235E943E000B9A8A /* AlarmClone */ = {
 			isa = PBXGroup;
 			children = (
+				560FFFAE23643A5400633DA4 /* Sound */,
 				566FB14B235FE980004922CC /* Model */,
 				566FB14A235FE1A2004922CC /* View */,
 				5673F617235EAECF000B9A8A /* Controller */,
@@ -199,10 +240,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				560FFFD723643F7000633DA4 /* Bulletin.mp3 in Resources */,
+				560FFFD523643F7000633DA4 /* Silk.mp3 in Resources */,
 				5673F60C235E943F000B9A8A /* LaunchScreen.storyboard in Resources */,
+				560FFFDA23643F7000633DA4 /* Reflection.mp3 in Resources */,
+				560FFFD623643F7000633DA4 /* Apex.mp3 in Resources */,
+				560FFFD423643F7000633DA4 /* Radar.mp3 in Resources */,
 				5673F609235E943F000B9A8A /* Assets.xcassets in Resources */,
 				5673F607235E943E000B9A8A /* Main.storyboard in Resources */,
+				560FFFD923643F7000633DA4 /* Slow Rise.mp3 in Resources */,
 				56732F2123618CB2009CB9B7 /* RingToneTableViewCell.xib in Resources */,
+				560FFFD223643F7000633DA4 /* Ripples.mp3 in Resources */,
+				560FFFD823643F7000633DA4 /* Waves.mp3 in Resources */,
+				560FFFD323643F7000633DA4 /* Hillside.mp3 in Resources */,
+				560FFFD123643F7000633DA4 /* beacon.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +273,7 @@
 				56077EDA2361DA9500AD72C1 /* ModelData.swift in Sources */,
 				5673F600235E943E000B9A8A /* AppDelegate.swift in Sources */,
 				56732F2023618CB2009CB9B7 /* RingToneTableViewCell.swift in Sources */,
+				560FFFDE2364400100633DA4 /* NotificationPush.swift in Sources */,
 				5673F602235E943E000B9A8A /* SceneDelegate.swift in Sources */,
 				566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */,
 				5673F614235E9925000B9A8A /* AlarmTableViewCell.swift in Sources */,

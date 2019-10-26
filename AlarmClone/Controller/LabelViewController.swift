@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class LabelViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
