@@ -104,12 +104,12 @@ class SetAlarmViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - didTapSave
     @IBAction func save(_ sender: UIBarButtonItem) {
         
         let timeString = changeDateToString()
         let time = datePicker.date
         
-        //
         switch modeChoice {
         case .Add:
             let timeElement = TimeElement(timeString: timeString, time: time, textLabel: label, ringTone: ringTone, repeatStatus: repeatStatus, isOn: true)
@@ -122,6 +122,8 @@ class SetAlarmViewController: UIViewController {
             alarmVC.timeArray[indexPath.row].ringTone = ringTone
             alarmVC.timeArray[indexPath.row].repeatStatus = repeatStatus
         }
+        
+        alarmVC.timeArray.sort {  $0.time.compare($1.time) == .orderedAscending }
         
 //        setNotification()
         AlarmData.saveData(timeArray: alarmVC.timeArray)
