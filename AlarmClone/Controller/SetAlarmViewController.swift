@@ -5,6 +5,7 @@
 //  Created by Jes Yang on 2019/10/22.
 //  Copyright © 2019 Jes Yang. All rights reserved.
 //
+// cellForRowAt
 
 import UIKit
 
@@ -109,23 +110,39 @@ class SetAlarmViewController: UIViewController {
         
         let timeString = changeDateToString()
         let time = datePicker.date
+        let uuid = UUID().uuidString
         
         switch modeChoice {
         case .Add:
-            let timeElement = TimeElement(timeString: timeString, time: time, textLabel: label, ringTone: ringTone, repeatStatus: repeatStatus, isOn: true)
+            let timeElement = TimeElement(uuid: uuid,
+                                          timeString: timeString,
+                                          time: time,
+                                          textLabel: label,
+                                          ringTone: ringTone,
+                                          repeatStatus: repeatStatus,
+                                          isOn: true)
             alarmVC.timeArray.append(timeElement)
             
+//            let notificationPush = NotificationPush(uuid: uuid,
+//                                                    time: time,
+//                                                    label: label,
+//                                                    sound: ringTone)
+
+            let notificationPush = NotificationPush()
+            notificationPush.setNotification(uuid: uuid, time: time, label: label, sound: ringTone)
+            
         case .Edit:
-            alarmVC.timeArray[indexPath.row].timeString = timeString
-            alarmVC.timeArray[indexPath.row].textLabel = label
-            alarmVC.timeArray[indexPath.row].time = time
-            alarmVC.timeArray[indexPath.row].ringTone = ringTone
-            alarmVC.timeArray[indexPath.row].repeatStatus = repeatStatus
+            let index = indexPath.row
+            alarmVC.timeArray[index].timeString = timeString
+            alarmVC.timeArray[index].textLabel = label
+            alarmVC.timeArray[index].time = time
+            alarmVC.timeArray[index].ringTone = ringTone
+            alarmVC.timeArray[index].repeatStatus = repeatStatus
         }
         
         alarmVC.timeArray.sort {  $0.time.compare($1.time) == .orderedAscending }
         
-        setNotification()
+//        setNotification()
         AlarmData.saveData(timeArray: alarmVC.timeArray)
         alarmVC.timeArray = AlarmData.loadData()
         alarmVC.tableView.reloadData()
@@ -148,36 +165,36 @@ class SetAlarmViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func setNotification() {
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Alarm Notification"
-        
-        var notificationLabel = ""
-        var settingTime = Date()
-        
-        switch modeChoice {
-        case .Add:
-            notificationLabel = self.label
-            settingTime = datePicker.date
-        case .Edit:
-            notificationLabel = alarmVC.timeArray[indexPath.row].textLabel
-            settingTime = alarmVC.timeArray[indexPath.row].time
-            
-        }
-        
-        content.body = "This is the \(notificationLabel) notificaion."
-        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue:  "Ripples.mp3"))
-        
-        let triggerTime = Calendar.current.dateComponents([.hour,.minute], from: settingTime)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: true)
-        
-        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
-            print("Notificaion succeed.")
-        })
-    }
+//    func setNotification() {
+//
+//        let content = UNMutableNotificationContent()
+//        content.title = "Alarm Notification"
+//
+//        var notificationLabel = ""
+//        var settingTime = Date()
+//
+//        switch modeChoice {
+//        case .Add:
+//            notificationLabel = self.label
+//            settingTime = datePicker.date
+//        case .Edit:
+//            notificationLabel = alarmVC.timeArray[indexPath.row].textLabel
+//            settingTime = alarmVC.timeArray[indexPath.row].time
+//
+//        }
+//
+//        content.body = "This is the \(notificationLabel) notificaion."
+//        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue:  "Ripples.mp3"))
+//
+//        let triggerTime = Calendar.current.dateComponents([.hour,.minute], from: settingTime)
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: true)
+//
+//        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
+//
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
+//            print("Notificaion succeed.")
+//        })
+//    }
     
 }
 
@@ -200,6 +217,7 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
             case 0...2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SetAlarmTableViewCell.self), for: indexPath) as! SetAlarmTableViewCell
                 
+                //
                 if indexPath.row == 0 {
                     cell.itemLabel.text = "Repeat"
                     cell.statusLabel.text = repeatStatus

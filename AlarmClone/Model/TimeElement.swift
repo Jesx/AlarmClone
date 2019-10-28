@@ -9,6 +9,7 @@
 import Foundation
 
 struct TimeElement: Codable {
+    var uuid: String
     var timeString: String
     var time: Date
     var textLabel: String

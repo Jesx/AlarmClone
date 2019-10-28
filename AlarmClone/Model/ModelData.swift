@@ -15,6 +15,25 @@ enum ModelData {
     ]
     
     static let repeatArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thusday", "Friday", "Saturday"]
+//        RepeatArray.allCases.text
     
     static let repeatAdditionalArray = ["Never", "Every day", "Weekend"]
+    
+//    enum RepeatArray: String, CaseIterable {
+//        case Sunday, Monday, Tuesday, Wednesday, Thusday, Friday, Saturday
+//    }
 }
+
+
+//extension Array where Element == ModelData.RepeatArray {
+//
+//    var text: String {
+//        return map { $0.rawValue }.joined(separator: " ")
+//        switch self {
+//        case .Sunday:
+//            <#code#>
+//        default:
+//            <#code#>
+//        }
+//    }
+//}

@@ -36,15 +36,17 @@ class AlarmViewController: UIViewController {
         tableView.tableFooterView = UIView()
         
         timeArray = AlarmData.loadData()
+
     }
     
-    @IBAction func editAlarm(_ sender: Any) {
+    @IBAction func editAlarm(_ sender: UIBarButtonItem) {
        
         if tableView.isEditing {
             tableView.isEditing = false
             editBarButton.title = "Edit"
             editBarButton.style = .plain
             tableView.separatorInset = .init(top: 0, left: 15, bottom: 0, right: 0)
+            
         }
         else {
             tableView.isEditing = true
@@ -91,10 +93,16 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         
         cell.accessoryView = cell.onOffSwitch
+        
+        // 
+        cell.onOffSwitch.isOn = timeArray[indexPath.row].isOn
+        cell.onOffSwitch.restorationIdentifier = "\(indexPath.row)"
+        cell.onOffSwitch.addTarget(self, action: #selector(didChangeValue(_:)), for: .valueChanged)
         cell.editingAccessoryView = cell.tailImageView
         
         cell.alarmNameLabel.text = timeArray[indexPath.row].textLabel
         
+        // Set repeat status
         if timeArray[indexPath.row].repeatStatus == ModelData.repeatAdditionalArray[0] {
             cell.repeatStatusLabel.text = ""
         } else if timeArray[indexPath.row].repeatStatus == ModelData.repeatAdditionalArray[1] {
@@ -106,6 +114,21 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         return cell
+    }
+    
+    @objc func didChangeValue(_ sender: UISwitch) {
+        
+        let index = Int(sender.restorationIdentifier!)!
+        let uuid = timeArray[index].uuid
+        let time = timeArray[index].time
+        let label = timeArray[index].textLabel
+        let sound = timeArray[index].ringTone
+        
+        if sender.isOn {
+            NotificationPush().setNotification(uuid: uuid, time: time, label: label, sound: sound)
+        } else {
+            NotificationPush().deleteNotification(uuid: uuid)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -145,7 +168,17 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        editBarButton.title = "Done"
+        editBarButton.style = .done
+
+    }
     
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        editBarButton.title = "Edit"
+        editBarButton.style = .plain
+    }
 }
 
 
