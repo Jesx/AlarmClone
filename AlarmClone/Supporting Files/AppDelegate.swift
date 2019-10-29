@@ -15,13 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // 在程式一啟動即詢問使用者是否接受圖文(alert)、聲音(sound)、數字(badge)三種類型的通知
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound, .carPlay], completionHandler: { (granted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay], completionHandler: { (granted, error) in
             if granted {
                 print("Allowed.")
             } else {
                 print("Not allowed.")
             }
         })
+        
+        let snoozeAction = UNNotificationAction(identifier: "Snooze", title: "Snooze", options: [])
+        let dislikeAction = UNNotificationAction(identifier: "Stop", title: "Stop", options: [])
+        let category = UNNotificationCategory(identifier: "alarmMessage", actions: [snoozeAction, dislikeAction], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
         
         // Showing notification at foreground
         UNUserNotificationCenter.current().delegate = self
@@ -45,9 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     // Get notification at foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.badge, .sound, .alert])
+//        completionHandler([.badge, .sound, .alert])
+        completionHandler([.sound, .alert])
         print("Get notification at foreground...")
     }
 
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print(response.actionIdentifier)
+    }
 }
 

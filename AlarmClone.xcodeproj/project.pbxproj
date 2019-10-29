@@ -10,6 +10,7 @@
 		56077EDA2361DA9500AD72C1 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077ED92361DA9500AD72C1 /* ModelData.swift */; };
 		56077EE02361EDB800AD72C1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077EDF2361EDB800AD72C1 /* CustomTextField.swift */; };
 		56077EE22362D6C600AD72C1 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077EE12362D6C600AD72C1 /* Protocol.swift */; };
+		560F00012366E17300633DA4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 560F00002366E17300633DA4 /* README.md */; };
 		560FFFD123643F7000633DA4 /* beacon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFC723643F6F00633DA4 /* beacon.mp3 */; };
 		560FFFD223643F7000633DA4 /* Ripples.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFC823643F6F00633DA4 /* Ripples.mp3 */; };
 		560FFFD323643F7000633DA4 /* Hillside.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFC923643F6F00633DA4 /* Hillside.mp3 */; };
@@ -44,6 +45,7 @@
 		56077ED92361DA9500AD72C1 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		56077EDF2361EDB800AD72C1 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		56077EE12362D6C600AD72C1 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		560F00002366E17300633DA4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		560FFFC723643F6F00633DA4 /* beacon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beacon.mp3; sourceTree = "<group>"; };
 		560FFFC823643F6F00633DA4 /* Ripples.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ripples.mp3; sourceTree = "<group>"; };
 		560FFFC923643F6F00633DA4 /* Hillside.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Hillside.mp3; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		5673F5F3235E943E000B9A8A = {
 			isa = PBXGroup;
 			children = (
+				560F00002366E17300633DA4 /* README.md */,
 				5673F5FE235E943E000B9A8A /* AlarmClone */,
 				5673F5FD235E943E000B9A8A /* Products */,
 			);
@@ -252,6 +255,7 @@
 				56732F2123618CB2009CB9B7 /* RingToneTableViewCell.xib in Resources */,
 				560FFFD223643F7000633DA4 /* Ripples.mp3 in Resources */,
 				560FFFD823643F7000633DA4 /* Waves.mp3 in Resources */,
+				560F00012366E17300633DA4 /* README.md in Resources */,
 				560FFFD323643F7000633DA4 /* Hillside.mp3 in Resources */,
 				560FFFD123643F7000633DA4 /* beacon.mp3 in Resources */,
 			);

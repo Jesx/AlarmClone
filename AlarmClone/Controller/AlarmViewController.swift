@@ -6,10 +6,6 @@
 //  Copyright © 2019 Jes Yang. All rights reserved.
 //
 
-// Switch button function
-// notification
-// play ring
-
 import UIKit
 
 class AlarmViewController: UIViewController {
@@ -57,6 +53,14 @@ class AlarmViewController: UIViewController {
     }
     
     @IBAction func addAlarm(_ sender: UIBarButtonItem) {
+        
+        if tableView.isEditing {
+            tableView.isEditing = false
+            editBarButton.title = "Edit"
+            editBarButton.style = .plain
+            tableView.separatorInset = .init(top: 0, left: 15, bottom: 0, right: 0)
+        }
+        
         let naviIdentifier = "naviAlarmSetting"
         let naviController = storyboard?.instantiateViewController(withIdentifier: naviIdentifier) as! UINavigationController
         let setAlarmVC = (naviController.viewControllers.first as! SetAlarmViewController)
@@ -78,10 +82,10 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AlarmTableViewCell.self), for: indexPath) as! AlarmTableViewCell
         
-        cell.timeLabel.text = timeArray[indexPath.row].timeString
+        cell.timeLabel.text = timeArray[indexPath.row].time.timeString
   
         // Set the custom font in string
-        let timeTextCount = timeArray[indexPath.row].timeString.count
+        let timeTextCount = timeArray[indexPath.row].time.timeString.count
         let attributedString = NSMutableAttributedString.init(string: cell.timeLabel.text!)
         
         attributedString.setAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30)],
@@ -94,7 +98,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.accessoryView = cell.onOffSwitch
         
-        // 
+        //
         cell.onOffSwitch.isOn = timeArray[indexPath.row].isOn
         cell.onOffSwitch.restorationIdentifier = "\(indexPath.row)"
         cell.onOffSwitch.addTarget(self, action: #selector(didChangeValue(_:)), for: .valueChanged)
@@ -125,9 +129,9 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         let sound = timeArray[index].ringTone
         
         if sender.isOn {
-            NotificationPush().setNotification(uuid: uuid, time: time, label: label, sound: sound)
+//            NotificationPush().setNotification(uuid: uuid, time: time, label: label, sound: sound)
         } else {
-            NotificationPush().deleteNotification(uuid: uuid)
+//            NotificationPush().deleteNotification(uuid: uuid)
         }
     }
     
@@ -145,7 +149,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
             setAlarmVC.alarmVC = self
             setAlarmVC.modeChoice = .Edit
             
-            setAlarmVC.timeString = timeArray[indexPath.row].timeString
+            setAlarmVC.timeString = timeArray[indexPath.row].time.timeString
             setAlarmVC.indexPath = indexPath
 
             present(naviController, animated: true) {

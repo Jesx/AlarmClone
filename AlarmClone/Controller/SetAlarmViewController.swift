@@ -4,8 +4,7 @@
 //
 //  Created by Jes Yang on 2019/10/22.
 //  Copyright © 2019 Jes Yang. All rights reserved.
-//
-// cellForRowAt
+// 
 
 import UIKit
 
@@ -37,11 +36,12 @@ class SetAlarmViewController: UIViewController {
         }
     }
     
+    // MARK: - DatePickerSetting
     fileprivate func datePickerSetting() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mma"
-        
+
         datePicker.datePickerMode = .time
+        dateFormatter.dateFormat = "h:mma"
         
         if let date = dateFormatter.date(from: timeString ?? "") {
             datePicker.setDate(date, animated: true)
@@ -108,15 +108,21 @@ class SetAlarmViewController: UIViewController {
     // MARK: - didTapSave
     @IBAction func save(_ sender: UIBarButtonItem) {
         
-        let timeString = changeDateToString()
-        let time = datePicker.date
+//        let timeString = changeDateToString()
+//        let time = datePicker.date
+        
+        let date = datePicker.date
+        let time: DateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+        guard let hour = time.hour else { fatalError() }
+        guard let min = time.minute  else { fatalError() }
+
         let uuid = UUID().uuidString
         
         switch modeChoice {
         case .Add:
             let timeElement = TimeElement(uuid: uuid,
-                                          timeString: timeString,
-                                          time: time,
+//                                          timeString: timeString,
+                                          time: Time(hour: hour, min: min),
                                           textLabel: label,
                                           ringTone: ringTone,
                                           repeatStatus: repeatStatus,
@@ -128,19 +134,20 @@ class SetAlarmViewController: UIViewController {
 //                                                    label: label,
 //                                                    sound: ringTone)
 
-            let notificationPush = NotificationPush()
-            notificationPush.setNotification(uuid: uuid, time: time, label: label, sound: ringTone)
+//            let notificationPush = NotificationPush()
+//            notificationPush.setNotification(uuid: uuid, time: Time(hour: hour, min: min), label: label, sound: ringTone)
             
         case .Edit:
             let index = indexPath.row
-            alarmVC.timeArray[index].timeString = timeString
+            alarmVC.timeArray[index].time = Time(hour: hour, min: min)
             alarmVC.timeArray[index].textLabel = label
-            alarmVC.timeArray[index].time = time
+//            alarmVC.timeArray[index].time = time
             alarmVC.timeArray[index].ringTone = ringTone
             alarmVC.timeArray[index].repeatStatus = repeatStatus
         }
         
-        alarmVC.timeArray.sort {  $0.time.compare($1.time) == .orderedAscending }
+//        alarmVC.timeArray.sort {  $0.time.compare($1.time) == .orderedAscending }
+        alarmVC.timeArray.sort { $0.time.timeString.compare($1.time.timeString) == .orderedAscending }
         
 //        setNotification()
         AlarmData.saveData(timeArray: alarmVC.timeArray)
@@ -151,8 +158,21 @@ class SetAlarmViewController: UIViewController {
     }
 
     func changeDateToString() -> String {
+        
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = .current
+//        let dateFormat: String = DateFormatter.dateFormat(fromTemplate: "h:mm", options: 0, locale: .current) ?? ""
+        
+//        if dateFormat.contains("a") {
+//            //phone is set to 12 hours
+//            dateFormatter.dateFormat = "h:mma"
+//        } else {
+//            //phone is set to 24 hours
+//            dateFormatter.dateFormat = dateFormat
+//        }
+
         dateFormatter.dateFormat = "h:mma"
+        
         let timeString = dateFormatter.string(from: datePicker.date)
         
         return timeString
@@ -164,37 +184,6 @@ class SetAlarmViewController: UIViewController {
         alarmVC.tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
-    
-//    func setNotification() {
-//
-//        let content = UNMutableNotificationContent()
-//        content.title = "Alarm Notification"
-//
-//        var notificationLabel = ""
-//        var settingTime = Date()
-//
-//        switch modeChoice {
-//        case .Add:
-//            notificationLabel = self.label
-//            settingTime = datePicker.date
-//        case .Edit:
-//            notificationLabel = alarmVC.timeArray[indexPath.row].textLabel
-//            settingTime = alarmVC.timeArray[indexPath.row].time
-//
-//        }
-//
-//        content.body = "This is the \(notificationLabel) notificaion."
-//        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue:  "Ripples.mp3"))
-//
-//        let triggerTime = Calendar.current.dateComponents([.hour,.minute], from: settingTime)
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: true)
-//
-//        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
-//
-//        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
-//            print("Notificaion succeed.")
-//        })
-//    }
     
 }
 
@@ -231,7 +220,6 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
                 } else if indexPath.row == 2 {
                     cell.itemLabel.text = "Sound"
                     cell.statusLabel.text = ringTone
-                    
                 }
                 
                 cell.accessoryView = cell.tailImageView
