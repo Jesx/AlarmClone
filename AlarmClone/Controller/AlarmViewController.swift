@@ -106,15 +106,15 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.alarmNameLabel.text = timeArray[indexPath.row].textLabel
         
-        // Set repeat status
-        if timeArray[indexPath.row].repeatStatus == ModelData.repeatAdditionalArray[0] {
+        // Set UI repeat status
+        if timeArray[indexPath.row].repeatStatus.uiString == ModelData.repeatAdditionalArray[0] {
             cell.repeatStatusLabel.text = ""
-        } else if timeArray[indexPath.row].repeatStatus == ModelData.repeatAdditionalArray[1] {
-            cell.repeatStatusLabel.text = ", " + timeArray[indexPath.row].repeatStatus.lowercased()
-        } else if timeArray[indexPath.row].repeatStatus == ModelData.repeatAdditionalArray[2] {
-            cell.repeatStatusLabel.text = ", every " + timeArray[indexPath.row].repeatStatus.lowercased()
+        } else if timeArray[indexPath.row].repeatStatus.uiString == ModelData.repeatAdditionalArray[1] {
+            cell.repeatStatusLabel.text = ", " + timeArray[indexPath.row].repeatStatus.uiString.lowercased()
+        } else if timeArray[indexPath.row].repeatStatus.uiString == ModelData.repeatAdditionalArray[2] {
+            cell.repeatStatusLabel.text = ", every " + timeArray[indexPath.row].repeatStatus.uiString.lowercased()
         } else {
-            cell.repeatStatusLabel.text = ", " + timeArray[indexPath.row].repeatStatus
+            cell.repeatStatusLabel.text = ",  \(timeArray[indexPath.row].repeatStatus.uiString)"
         }
         
         return cell
@@ -122,17 +122,17 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     
     @objc func didChangeValue(_ sender: UISwitch) {
         
-        let index = Int(sender.restorationIdentifier!)!
-        let uuid = timeArray[index].uuid
-        let time = timeArray[index].time
-        let label = timeArray[index].textLabel
-        let sound = timeArray[index].ringTone
-        
-        if sender.isOn {
+//        let index = Int(sender.restorationIdentifier!)!
+//        let uuid = timeArray[index].uuid
+//        let time = timeArray[index].time
+//        let label = timeArray[index].textLabel
+//        let sound = timeArray[index].ringTone
+//
+//        if sender.isOn {
 //            NotificationPush().setNotification(uuid: uuid, time: time, label: label, sound: sound)
-        } else {
+//        } else {
 //            NotificationPush().deleteNotification(uuid: uuid)
-        }
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -150,6 +150,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
             setAlarmVC.modeChoice = .Edit
             
             setAlarmVC.timeString = timeArray[indexPath.row].time.timeString
+            setAlarmVC.repeatStatus = timeArray[indexPath.row].repeatStatus.uiString
             setAlarmVC.indexPath = indexPath
 
             present(naviController, animated: true) {

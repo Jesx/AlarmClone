@@ -22,6 +22,8 @@ class SetAlarmViewController: UIViewController {
     var timeString: String?
     
     var repeatStatus: String!
+    var repeatStatusArray = [ModelData.DaysOfWeek]()
+    
     var ringTone: String!
     var label: String!
     
@@ -90,7 +92,7 @@ class SetAlarmViewController: UIViewController {
         case .Edit:
             ringTone = alarmVC.timeArray[indexPath.row].ringTone
             label = alarmVC.timeArray[indexPath.row].textLabel
-            repeatStatus = alarmVC.timeArray[indexPath.row].repeatStatus
+            repeatStatusArray = alarmVC.timeArray[indexPath.row].repeatStatus
         }
         
         tableView.reloadData()
@@ -108,9 +110,6 @@ class SetAlarmViewController: UIViewController {
     // MARK: - didTapSave
     @IBAction func save(_ sender: UIBarButtonItem) {
         
-//        let timeString = changeDateToString()
-//        let time = datePicker.date
-        
         let date = datePicker.date
         let time: DateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
         guard let hour = time.hour else { fatalError() }
@@ -121,11 +120,10 @@ class SetAlarmViewController: UIViewController {
         switch modeChoice {
         case .Add:
             let timeElement = TimeElement(uuid: uuid,
-//                                          timeString: timeString,
                                           time: Time(hour: hour, min: min),
                                           textLabel: label,
                                           ringTone: ringTone,
-                                          repeatStatus: repeatStatus,
+                                          repeatStatus: repeatStatusArray,
                                           isOn: true)
             alarmVC.timeArray.append(timeElement)
             
@@ -141,9 +139,8 @@ class SetAlarmViewController: UIViewController {
             let index = indexPath.row
             alarmVC.timeArray[index].time = Time(hour: hour, min: min)
             alarmVC.timeArray[index].textLabel = label
-//            alarmVC.timeArray[index].time = time
             alarmVC.timeArray[index].ringTone = ringTone
-            alarmVC.timeArray[index].repeatStatus = repeatStatus
+            alarmVC.timeArray[index].repeatStatus = repeatStatusArray
         }
         
 //        alarmVC.timeArray.sort {  $0.time.compare($1.time) == .orderedAscending }
@@ -157,26 +154,16 @@ class SetAlarmViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    func changeDateToString() -> String {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = .current
-//        let dateFormat: String = DateFormatter.dateFormat(fromTemplate: "h:mm", options: 0, locale: .current) ?? ""
-        
-//        if dateFormat.contains("a") {
-//            //phone is set to 12 hours
-//            dateFormatter.dateFormat = "h:mma"
-//        } else {
-//            //phone is set to 24 hours
-//            dateFormatter.dateFormat = dateFormat
-//        }
-
-        dateFormatter.dateFormat = "h:mma"
-        
-        let timeString = dateFormatter.string(from: datePicker.date)
-        
-        return timeString
-    }
+//    func changeDateToString() -> String {
+//        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.locale = .current
+//        dateFormatter.dateFormat = "h:mma"
+//        
+//        let timeString = dateFormatter.string(from: datePicker.date)
+//        
+//        return timeString
+//    }
     
     @IBAction func deleteAlarm(_ sender: UIButton) {
         alarmVC.timeArray.remove(at: indexPath.row)
@@ -261,7 +248,7 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
             case 0:
                 let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: StatusTableViewController.self)) as! StatusTableViewController
                 vc.delegate = self
-                vc.repeatDay = repeatStatus
+                vc.setAlarmVC = self
                 navigationController?.pushViewController(vc, animated: true)
             
             case 1:
@@ -313,7 +300,8 @@ extension SetAlarmViewController: RingToneSelectedDelegate {
 
 extension SetAlarmViewController: SetRepeatDelegate {
     
-    func setRepeate(day: String) {
-        self.repeatStatus = day
+    func setRepeate(days: [ModelData.DaysOfWeek]) {
+        self.repeatStatus = days.uiString
+        self.repeatStatusArray = days
     }
 }

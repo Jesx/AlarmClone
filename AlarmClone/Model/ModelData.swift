@@ -14,26 +14,28 @@ enum ModelData {
         "Reflection","Ripples", "Silk", "Slow Rise", "Waves"
     ]
     
-    static let repeatArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thusday", "Friday", "Saturday"]
-//        RepeatArray.allCases.text
+    static let repeatArray: [String] = DaysOfWeek.allCases.map { $0.rawValue }
     
     static let repeatAdditionalArray = ["Never", "Every day", "Weekend"]
     
-//    enum RepeatArray: String, CaseIterable {
-//        case Sunday, Monday, Tuesday, Wednesday, Thusday, Friday, Saturday
-//    }
+    enum DaysOfWeek: String, CaseIterable {
+        case Sunday, Monday, Tuesday, Wednesday, Thusday, Friday, Saturday
+    }
 }
 
+extension Array where Element == ModelData.DaysOfWeek {
 
-//extension Array where Element == ModelData.RepeatArray {
-//
-//    var text: String {
-//        return map { $0.rawValue }.joined(separator: " ")
-//        switch self {
-//        case .Sunday:
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
-//    }
-//}
+    var uiString: String {
+        
+        switch self {
+        case []:
+            return ModelData.repeatAdditionalArray[0]
+        case [.Sunday, .Monday, .Tuesday, .Wednesday, .Thusday, .Friday,.Saturday]:
+            return ModelData.repeatAdditionalArray[1]
+        case [.Sunday, .Saturday]:
+            return ModelData.repeatAdditionalArray[2]
+        default:
+            return map{$0.rawValue.prefix(3)}.joined(separator: " ")
+        }
+    }
+}

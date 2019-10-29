@@ -10,65 +10,37 @@ import UIKit
 
 class StatusTableViewController: UITableViewController {
     
-    var repeatArray: [(day: String, isSelected: Bool)] = ModelData.repeatArray.map { (day: $0, isSelected: false) }
-    
-    var repeatStatusArray = [String]()
-    
+    var repeatArray: [(day: ModelData.DaysOfWeek, isSelected: Bool)] = ModelData.DaysOfWeek.allCases.map { (day: $0, isSelected: false) }
+
+    var setAlarmVC: SetAlarmViewController!
     weak var delegate: SetRepeatDelegate?
-    var repeatDay: String!
+
     var index: Int!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadRepeatStatus()
+        
+        let repeatStatusArray = setAlarmVC.repeatStatusArray
+        
+        for day in repeatStatusArray {
+            index = repeatArray.firstIndex(where: { $0.day == day })
+            print(index!)
+            repeatArray[Int(index)].isSelected = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        saveRepeatStatus()
-        delegate?.setRepeate(day: repeatDay)
-    }
-    
-    func saveRepeatStatus() {
+        let repeatStatus = repeatArray.filter({ (day) -> Bool in
+            day.isSelected
+        })
         
-        repeatStatusArray = [String]()
-        for day in repeatArray {
-            if day.isSelected {
-                let dayShortName = day.day.prefix(3)
-                repeatStatusArray.append(String(dayShortName))
-            }
-        }
-        
-        if repeatStatusArray.count == 0 {
-            repeatDay = ModelData.repeatAdditionalArray[0]
-        } else if repeatStatusArray.count == 7 {
-            repeatDay = ModelData.repeatAdditionalArray[1]
-        } else {
-            if repeatStatusArray[0] == repeatArray[0].day.prefix(3) && repeatStatusArray[1] == repeatArray[6].day.prefix(3) {
-                repeatDay = ModelData.repeatAdditionalArray[2]
-            } else {
-                for index in 0..<repeatStatusArray.count {
-                    if index == 0 {
-                        repeatDay = repeatStatusArray[index]
-                    } else {
-                        repeatDay += " \(repeatStatusArray[index])"
-                    }
-                }
-            }
-        }
-        
-        AlarmData.saveRepeatStatus(repeatStatusArray: repeatStatusArray)
-    }
-    
-    func loadRepeatStatus() {
-        repeatStatusArray = AlarmData.loadRepeatStatus()
-        for day in repeatStatusArray {
-            index = repeatArray.firstIndex(where: { $0.day.prefix(3) == day })
-            repeatArray[Int(index)].isSelected = true
-        }
-    }
+        delegate?.setRepeate(days: repeatStatus.map { $0.day })
 
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

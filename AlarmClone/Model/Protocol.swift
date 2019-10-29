@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SetRepeatDelegate: AnyObject {
-    func setRepeate (day: String)
+    func setRepeate (days: [ModelData.DaysOfWeek])
 }
 
 protocol LabelSettingDelegate: AnyObject {

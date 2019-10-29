@@ -10,11 +10,10 @@ import Foundation
 
 struct TimeElement: Codable {
     var uuid: String
-//    var timeString: String
     var time: Time
     var textLabel: String
     var ringTone: String
-    var repeatStatus: String
+    var repeatStatus: [ModelData.DaysOfWeek]
     var isOn: Bool
 }
 
@@ -32,6 +31,12 @@ struct Time: Codable {
     var date: Date { DateComponents(calendar: Calendar.current, year: 2019, month: 10, day: 29, hour: hour, minute: min, second: 20).date! }
     
     func get(array: [String]) -> [Date] {
+        //https://stackoverflow.com/questions/47223014/get-next-tuesday-and-thursday-from-current-date-in-swift?rq=1
+        fatalError()
         return [date]
     }
+}
+
+extension ModelData.DaysOfWeek: Codable {
+    
 }
