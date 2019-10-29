@@ -107,11 +107,11 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         cell.alarmNameLabel.text = timeArray[indexPath.row].textLabel
         
         // Set UI repeat status
-        if timeArray[indexPath.row].repeatStatus.uiString == ModelData.repeatAdditionalArray[0] {
+        if timeArray[indexPath.row].repeatStatus.uiString == DetailInfo.repeatAdditionalArray[0] {
             cell.repeatStatusLabel.text = ""
-        } else if timeArray[indexPath.row].repeatStatus.uiString == ModelData.repeatAdditionalArray[1] {
+        } else if timeArray[indexPath.row].repeatStatus.uiString == DetailInfo.repeatAdditionalArray[1] {
             cell.repeatStatusLabel.text = ", " + timeArray[indexPath.row].repeatStatus.uiString.lowercased()
-        } else if timeArray[indexPath.row].repeatStatus.uiString == ModelData.repeatAdditionalArray[2] {
+        } else if timeArray[indexPath.row].repeatStatus.uiString == DetailInfo.repeatAdditionalArray[2] {
             cell.repeatStatusLabel.text = ", every " + timeArray[indexPath.row].repeatStatus.uiString.lowercased()
         } else {
             cell.repeatStatusLabel.text = ",  \(timeArray[indexPath.row].repeatStatus.uiString)"

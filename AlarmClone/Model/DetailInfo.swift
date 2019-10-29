@@ -1,5 +1,5 @@
 //
-//  ModelData.swift
+//  DetailInfo.swift
 //  AlarmClone
 //
 //  Created by Jes Yang on 2019/10/24.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ModelData {
+enum DetailInfo {
     static let ringTone = [
         "Apex","Beacon", "Bulletin", "Hillside", "Radar",
         "Reflection","Ripples", "Silk", "Slow Rise", "Waves"
@@ -23,17 +23,17 @@ enum ModelData {
     }
 }
 
-extension Array where Element == ModelData.DaysOfWeek {
+extension Array where Element == DetailInfo.DaysOfWeek {
 
     var uiString: String {
         
         switch self {
         case []:
-            return ModelData.repeatAdditionalArray[0]
+            return DetailInfo.repeatAdditionalArray[0]
         case [.Sunday, .Monday, .Tuesday, .Wednesday, .Thusday, .Friday,.Saturday]:
-            return ModelData.repeatAdditionalArray[1]
+            return DetailInfo.repeatAdditionalArray[1]
         case [.Sunday, .Saturday]:
-            return ModelData.repeatAdditionalArray[2]
+            return DetailInfo.repeatAdditionalArray[2]
         default:
             return map{$0.rawValue.prefix(3)}.joined(separator: " ")
         }

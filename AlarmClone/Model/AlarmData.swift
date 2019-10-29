@@ -24,17 +24,4 @@ class AlarmData {
         return timeArray
     }
     
-//    static func saveRepeatStatus(repeatStatusArray: [String]) {
-//        // Use PropertyListEncoder to convert Player into Data / NSData
-//        UserDefaults.standard.set(try? PropertyListEncoder().encode(repeatStatusArray), forKey: "repeatArray")
-//    }
-//
-//    static func loadRepeatStatus() -> [String] {
-//        guard let repeatData = UserDefaults.standard.object(forKey: "repeatArray") as? Data else { return [String]() }
-//
-//        // Use PropertyListDecoder to convert Data into Player
-//        guard let repeatArray = (try? PropertyListDecoder().decode([String].self, from: repeatData)) else { return [String]() }
-//
-//        return repeatArray
-//    }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class StatusTableViewController: UITableViewController {
     
-    var repeatArray: [(day: ModelData.DaysOfWeek, isSelected: Bool)] = ModelData.DaysOfWeek.allCases.map { (day: $0, isSelected: false) }
+    var repeatArray: [(day: DetailInfo.DaysOfWeek, isSelected: Bool)] = DetailInfo.DaysOfWeek.allCases.map { (day: $0, isSelected: false) }
 
     var setAlarmVC: SetAlarmViewController!
     weak var delegate: SetRepeatDelegate?

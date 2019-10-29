@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56077EDA2361DA9500AD72C1 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077ED92361DA9500AD72C1 /* ModelData.swift */; };
+		56077EDA2361DA9500AD72C1 /* DetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077ED92361DA9500AD72C1 /* DetailInfo.swift */; };
 		56077EE02361EDB800AD72C1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077EDF2361EDB800AD72C1 /* CustomTextField.swift */; };
 		56077EE22362D6C600AD72C1 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56077EE12362D6C600AD72C1 /* Protocol.swift */; };
 		560F00012366E17300633DA4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 560F00002366E17300633DA4 /* README.md */; };
@@ -42,7 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		56077ED92361DA9500AD72C1 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		56077ED92361DA9500AD72C1 /* DetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfo.swift; sourceTree = "<group>"; };
 		56077EDF2361EDB800AD72C1 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		56077EE12362D6C600AD72C1 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		560F00002366E17300633DA4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		566FB14B235FE980004922CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				56077ED92361DA9500AD72C1 /* ModelData.swift */,
+				56077ED92361DA9500AD72C1 /* DetailInfo.swift */,
 				56D25A872361524200296148 /* AlarmData.swift */,
 				566FB146235F6609004922CC /* TimeElement.swift */,
 				56077EE12362D6C600AD72C1 /* Protocol.swift */,
@@ -274,7 +274,7 @@
 				5673F616235EA043000B9A8A /* SetAlarmViewController.swift in Sources */,
 				56077EE02361EDB800AD72C1 /* CustomTextField.swift in Sources */,
 				56D25A8A23616D3200296148 /* RingToneTableViewController.swift in Sources */,
-				56077EDA2361DA9500AD72C1 /* ModelData.swift in Sources */,
+				56077EDA2361DA9500AD72C1 /* DetailInfo.swift in Sources */,
 				5673F600235E943E000B9A8A /* AppDelegate.swift in Sources */,
 				56732F2023618CB2009CB9B7 /* RingToneTableViewCell.swift in Sources */,
 				560FFFDE2364400100633DA4 /* NotificationPush.swift in Sources */,

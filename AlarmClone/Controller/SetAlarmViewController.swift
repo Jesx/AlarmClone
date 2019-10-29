@@ -22,7 +22,7 @@ class SetAlarmViewController: UIViewController {
     var timeString: String?
     
     var repeatStatus: String!
-    var repeatStatusArray = [ModelData.DaysOfWeek]()
+    var repeatStatusArray = [DetailInfo.DaysOfWeek]()
     
     var ringTone: String!
     var label: String!
@@ -294,13 +294,13 @@ extension SetAlarmViewController: LabelSettingDelegate {
 extension SetAlarmViewController: RingToneSelectedDelegate {
     
     func ringToneSelected(index: Int) {
-        self.ringTone = ModelData.ringTone[index]
+        self.ringTone = DetailInfo.ringTone[index]
     }
 }
 
 extension SetAlarmViewController: SetRepeatDelegate {
     
-    func setRepeate(days: [ModelData.DaysOfWeek]) {
+    func setRepeate(days: [DetailInfo.DaysOfWeek]) {
         self.repeatStatus = days.uiString
         self.repeatStatusArray = days
     }

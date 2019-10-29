@@ -13,7 +13,7 @@ struct TimeElement: Codable {
     var time: Time
     var textLabel: String
     var ringTone: String
-    var repeatStatus: [ModelData.DaysOfWeek]
+    var repeatStatus: [DetailInfo.DaysOfWeek]
     var isOn: Bool
 }
 
@@ -37,6 +37,6 @@ struct Time: Codable {
     }
 }
 
-extension ModelData.DaysOfWeek: Codable {
+extension DetailInfo.DaysOfWeek: Codable {
     
 }

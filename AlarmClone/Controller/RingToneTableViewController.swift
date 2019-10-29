@@ -10,7 +10,7 @@ import UIKit
 
 class RingToneTableViewController: UITableViewController {
 
-    var ringArray: [(ringTone: String, isSelect: Bool)] = ModelData.ringTone.map { (ringTone: $0, isSelect: false) }
+    var ringArray: [(ringTone: String, isSelect: Bool)] = DetailInfo.ringTone.map { (ringTone: $0, isSelect: false) }
     
     var index: Int!
     var ringTone: String!
