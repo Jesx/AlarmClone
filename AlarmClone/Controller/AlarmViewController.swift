@@ -16,7 +16,8 @@ class AlarmViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
-
+    @IBOutlet weak var textLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +33,7 @@ class AlarmViewController: UIViewController {
         tableView.tableFooterView = UIView()
         
         timeArray = AlarmData.loadData()
-
+        AlarmData.mainViewChange(self)
     }
     
     @IBAction func editAlarm(_ sender: UIBarButtonItem) {
@@ -174,6 +175,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         editBarButton.title = "Edit"
         editBarButton.style = .plain
+        AlarmData.mainViewChange(self)
     }
 }
 

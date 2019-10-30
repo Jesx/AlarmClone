@@ -23,4 +23,14 @@ class AlarmData {
         
         return timeArray
     }
+    
+    static func mainViewChange(_ vc: AlarmViewController) {
+        if vc.timeArray.count == 0 {
+            vc.tableView.isHidden = true
+            vc.textLabel.isHidden = false
+        } else {
+            vc.tableView.isHidden = false
+            vc.textLabel.isHidden = true
+        }
+    }
 }
