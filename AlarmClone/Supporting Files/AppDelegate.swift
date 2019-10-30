@@ -56,7 +56,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print(response.actionIdentifier)
+//        print(response.actionIdentifier)
+        
+        let userInfo = response.notification.request.content.userInfo
+        print(userInfo)
+        
+//        switch response.actionIdentifier {
+//        case "Snooze":
+//           sharedMeetingManager.acceptMeeting(user: userID,
+//                 meetingID: meetingID)
+//           break
+//
+//        case "Stop":
+//           sharedMeetingManager.declineMeeting(user: userID,
+//                 meetingID: meetingID)
+//           break
+//
+//        case UNNotificationDefaultActionIdentifier,
+//             UNNotificationDismissActionIdentifier:
+           // Queue meeting-related notifications for later
+           //  if the user does not act.
+//           sharedMeetingManager.queueMeetingForDelivery(user: userID,
+//                 meetingID: meetingID)
+//           break
+//
+//        default:
+//           break
+//        }
     }
 }
 

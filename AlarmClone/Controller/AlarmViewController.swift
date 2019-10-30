@@ -101,7 +101,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         
         //
         cell.onOffSwitch.isOn = timeArray[indexPath.row].isOn
-        cell.onOffSwitch.restorationIdentifier = "\(indexPath.row)"
+        cell.onOffSwitch.tag = indexPath.row
         cell.onOffSwitch.addTarget(self, action: #selector(didChangeValue(_:)), for: .valueChanged)
         cell.editingAccessoryView = cell.tailImageView
         
@@ -116,7 +116,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     
     @objc func didChangeValue(_ sender: UISwitch) {
         
-        let index = Int(sender.restorationIdentifier!)!
+        let index = sender.tag
         let uuid = timeArray[index].uuid
         let time = timeArray[index].time
         let label = timeArray[index].textLabel
@@ -129,7 +129,8 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
             timeArray[index].isOn = false
             NotificationPush().deleteNotification(uuid: uuid)
         }
-        tableView.reloadData()
+        
+        tableView.reloadRows(at: [[0, index]], with: .fade)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
