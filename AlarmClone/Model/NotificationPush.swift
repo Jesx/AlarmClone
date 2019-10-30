@@ -11,7 +11,7 @@ import UserNotifications
 
 class NotificationPush {
     
-    func setNotification(uuid: String, time: Date, label: String, sound: String) {
+    func setNotification(uuid: String, time: Time, label: String, sound: String) {
         
         let content = UNMutableNotificationContent()
         content.title = "Alarm Notification"
@@ -21,7 +21,8 @@ class NotificationPush {
         content.sound = UNNotificationSound.init(named:UNNotificationSoundName(rawValue: "\(sound).mp3"))
         content.categoryIdentifier = "alarmMessage"
         
-        let triggerTime = Calendar.current.dateComponents([.hour,.minute], from: time)
+        let triggerTime = Calendar.current.dateComponents([.hour,.minute], from: time.date)
+        print(time.date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: true)
         let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
         

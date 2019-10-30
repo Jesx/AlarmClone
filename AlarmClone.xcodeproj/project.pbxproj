@@ -123,9 +123,9 @@
 		566FB14B235FE980004922CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				56077ED92361DA9500AD72C1 /* DetailInfo.swift */,
-				56D25A872361524200296148 /* AlarmData.swift */,
 				566FB146235F6609004922CC /* TimeElement.swift */,
+				56D25A872361524200296148 /* AlarmData.swift */,
+				56077ED92361DA9500AD72C1 /* DetailInfo.swift */,
 				56077EE12362D6C600AD72C1 /* Protocol.swift */,
 				560FFFDD2364400100633DA4 /* NotificationPush.swift */,
 			);

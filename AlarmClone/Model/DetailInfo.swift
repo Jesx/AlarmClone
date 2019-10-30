@@ -26,7 +26,6 @@ enum DetailInfo {
 extension Array where Element == DetailInfo.DaysOfWeek {
 
     var uiString: String {
-        
         switch self {
         case []:
             return DetailInfo.repeatAdditionalArray[0]
@@ -35,7 +34,21 @@ extension Array where Element == DetailInfo.DaysOfWeek {
         case [.Sunday, .Saturday]:
             return DetailInfo.repeatAdditionalArray[2]
         default:
-            return map{$0.rawValue.prefix(3)}.joined(separator: " ")
+            return map{ $0.rawValue.prefix(3) }.joined(separator: " ")
         }
     }
+    
+    var uiStringMain: String {
+        switch uiString {
+        case DetailInfo.repeatAdditionalArray[0]:
+            return ""
+        case DetailInfo.repeatAdditionalArray[1]:
+            return ", \(uiString.lowercased())"
+        case DetailInfo.repeatAdditionalArray[2]:
+            return ", every \(uiString.lowercased())"
+        default:
+            return ", \(uiString)"
+        }
+    }
+    
 }

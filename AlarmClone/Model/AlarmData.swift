@@ -23,5 +23,4 @@ class AlarmData {
         
         return timeArray
     }
-    
 }

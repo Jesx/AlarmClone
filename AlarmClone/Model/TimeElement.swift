@@ -24,17 +24,23 @@ struct Time: Codable {
     var timeString: String {
         let formatter = DateFormatter.dateFormat(fromTemplate: "h:mm a", options: 0, locale: .current)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat  = formatter
+        
+        if let formatter = formatter, formatter.contains("a") {
+            dateFormatter.dateFormat  = "h:mma"
+        } else {
+            dateFormatter.dateFormat  = formatter
+        }
+        
         return dateFormatter.string(from: date)
     }
     
     var date: Date { DateComponents(calendar: Calendar.current, year: 2019, month: 10, day: 29, hour: hour, minute: min, second: 20).date! }
     
-    func get(array: [String]) -> [Date] {
-        //https://stackoverflow.com/questions/47223014/get-next-tuesday-and-thursday-from-current-date-in-swift?rq=1
-        fatalError()
-        return [date]
-    }
+//    func get(array: [String]) -> [Date] {
+//        //https://stackoverflow.com/questions/47223014/get-next-tuesday-and-thursday-from-current-date-in-swift?rq=1
+//        fatalError()
+//        return [date]
+//    }
 }
 
 extension DetailInfo.DaysOfWeek: Codable {

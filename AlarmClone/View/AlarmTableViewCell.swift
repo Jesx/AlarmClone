@@ -28,9 +28,4 @@ class AlarmTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-    
-    func switchValueDidChange(_ sender: UISwitch) {
-        
-    }
-
 }

@@ -106,33 +106,24 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.alarmNameLabel.text = timeArray[indexPath.row].textLabel
         
-        // Set UI repeat status
-        if timeArray[indexPath.row].repeatStatus.uiString == DetailInfo.repeatAdditionalArray[0] {
-            cell.repeatStatusLabel.text = ""
-        } else if timeArray[indexPath.row].repeatStatus.uiString == DetailInfo.repeatAdditionalArray[1] {
-            cell.repeatStatusLabel.text = ", " + timeArray[indexPath.row].repeatStatus.uiString.lowercased()
-        } else if timeArray[indexPath.row].repeatStatus.uiString == DetailInfo.repeatAdditionalArray[2] {
-            cell.repeatStatusLabel.text = ", every " + timeArray[indexPath.row].repeatStatus.uiString.lowercased()
-        } else {
-            cell.repeatStatusLabel.text = ",  \(timeArray[indexPath.row].repeatStatus.uiString)"
-        }
+        cell.repeatStatusLabel.text = timeArray[indexPath.row].repeatStatus.uiStringMain
         
         return cell
     }
     
     @objc func didChangeValue(_ sender: UISwitch) {
         
-//        let index = Int(sender.restorationIdentifier!)!
-//        let uuid = timeArray[index].uuid
-//        let time = timeArray[index].time
-//        let label = timeArray[index].textLabel
-//        let sound = timeArray[index].ringTone
-//
-//        if sender.isOn {
-//            NotificationPush().setNotification(uuid: uuid, time: time, label: label, sound: sound)
-//        } else {
-//            NotificationPush().deleteNotification(uuid: uuid)
-//        }
+        let index = Int(sender.restorationIdentifier!)!
+        let uuid = timeArray[index].uuid
+        let time = timeArray[index].time
+        let label = timeArray[index].textLabel
+        let sound = timeArray[index].ringTone
+
+        if sender.isOn {
+            NotificationPush().setNotification(uuid: uuid, time: time, label: label, sound: sound)
+        } else {
+            NotificationPush().deleteNotification(uuid: uuid)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

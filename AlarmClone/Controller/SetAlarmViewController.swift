@@ -126,14 +126,9 @@ class SetAlarmViewController: UIViewController {
                                           repeatStatus: repeatStatusArray,
                                           isOn: true)
             alarmVC.timeArray.append(timeElement)
-            
-//            let notificationPush = NotificationPush(uuid: uuid,
-//                                                    time: time,
-//                                                    label: label,
-//                                                    sound: ringTone)
 
-//            let notificationPush = NotificationPush()
-//            notificationPush.setNotification(uuid: uuid, time: Time(hour: hour, min: min), label: label, sound: ringTone)
+            let notificationPush = NotificationPush()
+            notificationPush.setNotification(uuid: uuid, time: Time(hour: hour, min: min), label: label, sound: ringTone)
             
         case .Edit:
             let index = indexPath.row
@@ -146,24 +141,12 @@ class SetAlarmViewController: UIViewController {
 //        alarmVC.timeArray.sort {  $0.time.compare($1.time) == .orderedAscending }
         alarmVC.timeArray.sort { $0.time.timeString.compare($1.time.timeString) == .orderedAscending }
         
-//        setNotification()
         AlarmData.saveData(timeArray: alarmVC.timeArray)
         alarmVC.timeArray = AlarmData.loadData()
         alarmVC.tableView.reloadData()
         
         dismiss(animated: true, completion: nil)
     }
-
-//    func changeDateToString() -> String {
-//        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = .current
-//        dateFormatter.dateFormat = "h:mma"
-//        
-//        let timeString = dateFormatter.string(from: datePicker.date)
-//        
-//        return timeString
-//    }
     
     @IBAction func deleteAlarm(_ sender: UIButton) {
         alarmVC.timeArray.remove(at: indexPath.row)
