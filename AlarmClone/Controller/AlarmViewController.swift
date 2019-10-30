@@ -109,6 +109,8 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.repeatStatusLabel.text = timeArray[indexPath.row].repeatStatus.uiStringMain
         
+        cell.timeLabel.textColor = timeArray[indexPath.row].isOn ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        
         return cell
     }
     
@@ -121,10 +123,13 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         let sound = timeArray[index].ringTone
 
         if sender.isOn {
+            timeArray[index].isOn = true
             NotificationPush().setNotification(uuid: uuid, time: time, label: label, sound: sound)
         } else {
+            timeArray[index].isOn = false
             NotificationPush().deleteNotification(uuid: uuid)
         }
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
