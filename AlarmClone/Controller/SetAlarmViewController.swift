@@ -144,7 +144,7 @@ class SetAlarmViewController: UIViewController {
         AlarmData.saveData(alarmArray: alarmVC.alarmArray)
         alarmVC.alarmArray = AlarmData.loadData()
         alarmVC.tableView.reloadData()
-        AlarmData.mainViewChange(alarmVC)
+        InitialViewSetting.mainViewChange(alarmVC)
         dismiss(animated: true, completion: nil)
     }
     
@@ -153,7 +153,7 @@ class SetAlarmViewController: UIViewController {
         alarmVC.alarmArray.remove(at: indexPath.row)
         AlarmData.saveData(alarmArray: alarmVC.alarmArray)
         alarmVC.tableView.reloadData()
-        AlarmData.mainViewChange(alarmVC)
+        InitialViewSetting.mainViewChange(alarmVC)
         dismiss(animated: true, completion: nil)
     }
     

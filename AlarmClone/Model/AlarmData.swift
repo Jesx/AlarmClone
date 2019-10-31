@@ -23,14 +23,4 @@ class AlarmData {
         
         return alarmArray
     }
-    
-    static func mainViewChange(_ vc: AlarmViewController) {
-        if vc.alarmArray.count == 0 {
-            vc.tableView.isHidden = true
-            vc.textLabel.isHidden = false
-        } else {
-            vc.tableView.isHidden = false
-            vc.textLabel.isHidden = true
-        }
-    }
 }

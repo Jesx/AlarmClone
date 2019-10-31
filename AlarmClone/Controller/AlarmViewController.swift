@@ -33,7 +33,7 @@ class AlarmViewController: UIViewController {
         tableView.tableFooterView = UIView()
         
         alarmArray = AlarmData.loadData()
-        AlarmData.mainViewChange(self)
+        InitialViewSetting.mainViewChange(self)
     }
     
     @IBAction func editAlarm(_ sender: UIBarButtonItem) {
@@ -178,7 +178,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         editBarButton.title = "Edit"
         editBarButton.style = .plain
-        AlarmData.mainViewChange(self)
+        InitialViewSetting.mainViewChange(self)
     }
 }
 
