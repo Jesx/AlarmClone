@@ -12,8 +12,13 @@ import UserNotifications
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
+    let alarmArray = AlarmData.loadData()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        application.applicationIconBadgeNumber = 0
+        
         // 在程式一啟動即詢問使用者是否接受圖文(alert)、聲音(sound)、數字(badge)三種類型的通知
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay], completionHandler: { (granted, error) in
             if granted {
@@ -59,17 +64,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-
-        switch response.actionIdentifier {
-        case NotificationAction.Snooze.rawValue:
-
+        
+//        switch response.actionIdentifier {
+//        case NotificationAction.Snooze.rawValue:
 //            response.notification.request.content.
-            break
-        case NotificationAction.Stop.rawValue:
-            
-            break
-        default:
-            break
+//            break
+//        case NotificationAction.Stop.rawValue:
+//
+//            break
+//        default:
+//            break
+//        }
+//
+        center.getPendingNotificationRequests { (requests) in
+            print(requests)
         }
         
         completionHandler()

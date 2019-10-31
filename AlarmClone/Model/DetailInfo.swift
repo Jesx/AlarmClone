@@ -20,6 +20,7 @@ enum DetailInfo {
     
     enum DaysOfWeek: String, CaseIterable {
         case Sunday, Monday, Tuesday, Wednesday, Thusday, Friday, Saturday
+        var index: Int { DaysOfWeek.allCases.firstIndex(of: self)! }
     }
 }
 

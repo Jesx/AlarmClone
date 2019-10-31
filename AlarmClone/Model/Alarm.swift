@@ -15,6 +15,7 @@ struct Alarm: Codable {
     var ringTone: String
     var repeatStatus: [DetailInfo.DaysOfWeek]
     var isOn: Bool
+    var onSnooze: Bool
 }
 
 struct Time: Codable {
@@ -34,13 +35,14 @@ struct Time: Codable {
         return dateFormatter.string(from: date)
     }
     
-    var date: Date { DateComponents(calendar: Calendar.current, year: 2019, month: 10, day: 29, hour: hour, minute: min, second: 20).date! }
+    var date: Date {
+        dateComponents.date!
+    }
     
-//    func get(array: [String]) -> [Date] {
-//        //https://stackoverflow.com/questions/47223014/get-next-tuesday-and-thursday-from-current-date-in-swift?rq=1
-//        fatalError()
-//        return [date]
-//    }
+    var dateComponents: DateComponents {
+        DateComponents(calendar: Calendar.current, year: 2019, month: 10, day: 29, hour: hour, minute: min, second: 0)
+        
+    }
 }
 
 extension DetailInfo.DaysOfWeek: Codable {

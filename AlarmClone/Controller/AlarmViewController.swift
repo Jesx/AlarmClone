@@ -117,17 +117,13 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     @objc func didChangeValue(_ sender: UISwitch) {
         
         let index = sender.tag
-        let uuid = alarmArray[index].uuid
-        let time = alarmArray[index].time
-        let label = alarmArray[index].textLabel
-        let sound = alarmArray[index].ringTone
 
         if sender.isOn {
             alarmArray[index].isOn = true
-            NotificationPush().scheduleNotification(uuid: uuid, time: time, label: label, sound: sound)
+            NotificationPush().scheduleNotification(alarm: alarmArray[index])
         } else {
             alarmArray[index].isOn = false
-//            NotificationPush().deleteNotification(uuid: uuid)
+            NotificationPush().deleteNotification(alarm: alarmArray[index])
         }
         
         tableView.reloadRows(at: [[0, index]], with: .fade)
@@ -166,6 +162,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            NotificationPush().deleteNotification(alarm: alarmArray[indexPath.row])
             alarmArray.remove(at: indexPath.row)
             AlarmData.saveData(alarmArray: alarmArray)
             tableView.deleteRows(at: [indexPath], with: .fade)

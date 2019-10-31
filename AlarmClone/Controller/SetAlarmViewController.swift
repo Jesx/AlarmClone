@@ -119,16 +119,17 @@ class SetAlarmViewController: UIViewController {
         
         switch modeChoice {
         case .Add:
-            let timeElement = Alarm(uuid: uuid,
+            let alarm = Alarm(uuid: uuid,
                                           time: Time(hour: hour, min: min),
                                           textLabel: label,
                                           ringTone: ringTone,
                                           repeatStatus: repeatStatusArray,
-                                          isOn: true)
-            alarmVC.alarmArray.append(timeElement)
+                                          isOn: true,
+                                          onSnooze: true)
+            alarmVC.alarmArray.append(alarm)
 
             let notificationPush = NotificationPush()
-            notificationPush.scheduleNotification(uuid: uuid, time: Time(hour: hour, min: min), label: label, sound: ringTone)
+            notificationPush.scheduleNotification(alarm: alarm)
             
         case .Edit:
             let index = indexPath.row
@@ -148,6 +149,7 @@ class SetAlarmViewController: UIViewController {
     }
     
     @IBAction func deleteAlarm(_ sender: UIButton) {
+        NotificationPush().deleteNotification(alarm: alarmVC.alarmArray[indexPath.row])
         alarmVC.alarmArray.remove(at: indexPath.row)
         AlarmData.saveData(alarmArray: alarmVC.alarmArray)
         alarmVC.tableView.reloadData()
