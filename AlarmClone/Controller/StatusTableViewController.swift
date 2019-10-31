@@ -38,7 +38,6 @@ class StatusTableViewController: UITableViewController {
         })
         
         delegate?.setRepeate(days: repeatStatus.map { $0.day })
-
     }
     
     // MARK: - Table view data source

@@ -9,9 +9,17 @@
 import Foundation
 import UserNotifications
 
+enum NotificationCategory: String {
+    case AlarmNotification
+}
+
+enum NotificationAction: String {
+    case Snooze, Stop
+}
+
 class NotificationPush {
     
-    func setNotification(uuid: String, time: Time, label: String, sound: String) {
+    func scheduleNotification(uuid: String, time: Time, label: String, sound: String) {
         
         let content = UNMutableNotificationContent()
         content.title = "Alarm Notification"
@@ -19,14 +27,14 @@ class NotificationPush {
 //        content.badge = 1
 //        content.sound = UNNotificationSound.default
         content.sound = UNNotificationSound.init(named:UNNotificationSoundName(rawValue: "\(sound).mp3"))
-        content.categoryIdentifier = "alarmMessage"
-        
+
+        content.categoryIdentifier = NotificationCategory.AlarmNotification.rawValue
+
         let triggerTime = Calendar.current.dateComponents([.hour,.minute], from: time.date)
-        print(time.date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerTime, repeats: true)
         let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
         
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
@@ -36,7 +44,8 @@ class NotificationPush {
     }
     
     func deleteNotification(uuid: String) {
-        let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: [uuid])
+        let content = UNUserNotificationCenter.current()
+        content.removePendingNotificationRequests(withIdentifiers: [uuid])
+        
     }
 }

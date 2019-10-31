@@ -10,22 +10,22 @@ import Foundation
 
 class AlarmData {
     
-    static func saveData(timeArray: [TimeElement]) {
+    static func saveData(alarmArray: [Alarm]) {
         // Use PropertyListEncoder to convert Player into Data / NSData
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(timeArray), forKey: "timeArray")
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(alarmArray), forKey: "alarmArrayKey")
     }
     
-    static func loadData() -> [TimeElement] {
-        guard let timeData = UserDefaults.standard.object(forKey: "timeArray") as? Data else { return [TimeElement]() }
+    static func loadData() -> [Alarm] {
+        guard let alarms = UserDefaults.standard.object(forKey: "alarmArrayKey") as? Data else { return [Alarm]() }
         
         // Use PropertyListDecoder to convert Data into Player
-        guard let timeArray = (try? PropertyListDecoder().decode([TimeElement].self, from: timeData)) else { return [TimeElement]() }
+        guard let alarmArray = (try? PropertyListDecoder().decode([Alarm].self, from: alarms)) else { return [Alarm]() }
         
-        return timeArray
+        return alarmArray
     }
     
     static func mainViewChange(_ vc: AlarmViewController) {
-        if vc.timeArray.count == 0 {
+        if vc.alarmArray.count == 0 {
             vc.tableView.isHidden = true
             vc.textLabel.isHidden = false
         } else {

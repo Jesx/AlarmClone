@@ -22,7 +22,7 @@
 		560FFFD923643F7000633DA4 /* Slow Rise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFCF23643F7000633DA4 /* Slow Rise.mp3 */; };
 		560FFFDA23643F7000633DA4 /* Reflection.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 560FFFD023643F7000633DA4 /* Reflection.mp3 */; };
 		560FFFDE2364400100633DA4 /* NotificationPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560FFFDD2364400100633DA4 /* NotificationPush.swift */; };
-		566FB147235F6609004922CC /* TimeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB146235F6609004922CC /* TimeElement.swift */; };
+		566FB147235F6609004922CC /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB146235F6609004922CC /* Alarm.swift */; };
 		566FB149235FE177004922CC /* SetAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */; };
 		566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */; };
 		566FB15323606803004922CC /* StatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FB15223606803004922CC /* StatusTableViewController.swift */; };
@@ -57,7 +57,7 @@
 		560FFFCF23643F7000633DA4 /* Slow Rise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Slow Rise.mp3"; sourceTree = "<group>"; };
 		560FFFD023643F7000633DA4 /* Reflection.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Reflection.mp3; sourceTree = "<group>"; };
 		560FFFDD2364400100633DA4 /* NotificationPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationPush.swift; path = AlarmClone/Model/NotificationPush.swift; sourceTree = SOURCE_ROOT; };
-		566FB146235F6609004922CC /* TimeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeElement.swift; sourceTree = "<group>"; };
+		566FB146235F6609004922CC /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		566FB148235FE177004922CC /* SetAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		566FB14E23601B41004922CC /* SnoozeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeTableViewCell.swift; sourceTree = "<group>"; };
 		566FB15223606803004922CC /* StatusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableViewController.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		566FB14B235FE980004922CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				566FB146235F6609004922CC /* TimeElement.swift */,
+				566FB146235F6609004922CC /* Alarm.swift */,
 				56D25A872361524200296148 /* AlarmData.swift */,
 				56077ED92361DA9500AD72C1 /* DetailInfo.swift */,
 				56077EE12362D6C600AD72C1 /* Protocol.swift */,
@@ -270,7 +270,7 @@
 			files = (
 				56D25A642360B58C00296148 /* LabelViewController.swift in Sources */,
 				5673F604235E943E000B9A8A /* AlarmViewController.swift in Sources */,
-				566FB147235F6609004922CC /* TimeElement.swift in Sources */,
+				566FB147235F6609004922CC /* Alarm.swift in Sources */,
 				5673F616235EA043000B9A8A /* SetAlarmViewController.swift in Sources */,
 				56077EE02361EDB800AD72C1 /* CustomTextField.swift in Sources */,
 				56D25A8A23616D3200296148 /* RingToneTableViewController.swift in Sources */,

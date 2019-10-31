@@ -81,7 +81,7 @@ class SetAlarmViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        alarmVC.timeArray = AlarmData.loadData()
+        alarmVC.alarmArray = AlarmData.loadData()
         
         //
         switch modeChoice {
@@ -90,9 +90,9 @@ class SetAlarmViewController: UIViewController {
             label = "Alarm"
             repeatStatus = "Never"
         case .Edit:
-            ringTone = alarmVC.timeArray[indexPath.row].ringTone
-            label = alarmVC.timeArray[indexPath.row].textLabel
-            repeatStatusArray = alarmVC.timeArray[indexPath.row].repeatStatus
+            ringTone = alarmVC.alarmArray[indexPath.row].ringTone
+            label = alarmVC.alarmArray[indexPath.row].textLabel
+            repeatStatusArray = alarmVC.alarmArray[indexPath.row].repeatStatus
         }
         
         tableView.reloadData()
@@ -119,38 +119,37 @@ class SetAlarmViewController: UIViewController {
         
         switch modeChoice {
         case .Add:
-            let timeElement = TimeElement(uuid: uuid,
+            let timeElement = Alarm(uuid: uuid,
                                           time: Time(hour: hour, min: min),
                                           textLabel: label,
                                           ringTone: ringTone,
                                           repeatStatus: repeatStatusArray,
                                           isOn: true)
-            alarmVC.timeArray.append(timeElement)
+            alarmVC.alarmArray.append(timeElement)
 
             let notificationPush = NotificationPush()
-            notificationPush.setNotification(uuid: uuid, time: Time(hour: hour, min: min), label: label, sound: ringTone)
+            notificationPush.scheduleNotification(uuid: uuid, time: Time(hour: hour, min: min), label: label, sound: ringTone)
             
         case .Edit:
             let index = indexPath.row
-            alarmVC.timeArray[index].time = Time(hour: hour, min: min)
-            alarmVC.timeArray[index].textLabel = label
-            alarmVC.timeArray[index].ringTone = ringTone
-            alarmVC.timeArray[index].repeatStatus = repeatStatusArray
+            alarmVC.alarmArray[index].time = Time(hour: hour, min: min)
+            alarmVC.alarmArray[index].textLabel = label
+            alarmVC.alarmArray[index].ringTone = ringTone
+            alarmVC.alarmArray[index].repeatStatus = repeatStatusArray
         }
         
-//        alarmVC.timeArray.sort {  $0.time.compare($1.time) == .orderedAscending }
-        alarmVC.timeArray.sort { $0.time.timeString.compare($1.time.timeString) == .orderedAscending }
+        alarmVC.alarmArray.sort { $0.time.timeString.compare($1.time.timeString) == .orderedAscending }
         
-        AlarmData.saveData(timeArray: alarmVC.timeArray)
-        alarmVC.timeArray = AlarmData.loadData()
+        AlarmData.saveData(alarmArray: alarmVC.alarmArray)
+        alarmVC.alarmArray = AlarmData.loadData()
         alarmVC.tableView.reloadData()
         AlarmData.mainViewChange(alarmVC)
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func deleteAlarm(_ sender: UIButton) {
-        alarmVC.timeArray.remove(at: indexPath.row)
-        AlarmData.saveData(timeArray: alarmVC.timeArray)
+        alarmVC.alarmArray.remove(at: indexPath.row)
+        AlarmData.saveData(alarmArray: alarmVC.alarmArray)
         alarmVC.tableView.reloadData()
         AlarmData.mainViewChange(alarmVC)
         dismiss(animated: true, completion: nil)

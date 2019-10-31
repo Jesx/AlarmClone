@@ -1,5 +1,5 @@
 //
-//  timeElement.swift
+//  Alarm.swift
 //  AlarmClone
 //
 //  Created by Jes Yang on 2019/10/23.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TimeElement: Codable {
+struct Alarm: Codable {
     var uuid: String
     var time: Time
     var textLabel: String

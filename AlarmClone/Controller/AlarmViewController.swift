@@ -12,7 +12,7 @@ class AlarmViewController: UIViewController {
 
     let cellHeight = CGFloat(90)
     
-    var timeArray = [TimeElement]()
+    var alarmArray = [Alarm]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
@@ -32,7 +32,7 @@ class AlarmViewController: UIViewController {
         // Hiding extra line of empty cell
         tableView.tableFooterView = UIView()
         
-        timeArray = AlarmData.loadData()
+        alarmArray = AlarmData.loadData()
         AlarmData.mainViewChange(self)
     }
     
@@ -76,17 +76,17 @@ class AlarmViewController: UIViewController {
 extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timeArray.count
+        return alarmArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AlarmTableViewCell.self), for: indexPath) as! AlarmTableViewCell
         
-        cell.timeLabel.text = timeArray[indexPath.row].time.timeString
+        cell.timeLabel.text = alarmArray[indexPath.row].time.timeString
   
         // Set the custom font in string
-        let timeTextCount = timeArray[indexPath.row].time.timeString.count
+        let timeTextCount = alarmArray[indexPath.row].time.timeString.count
         let attributedString = NSMutableAttributedString.init(string: cell.timeLabel.text!)
         
         attributedString.setAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30)],
@@ -100,16 +100,16 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         cell.accessoryView = cell.onOffSwitch
         
         //
-        cell.onOffSwitch.isOn = timeArray[indexPath.row].isOn
+        cell.onOffSwitch.isOn = alarmArray[indexPath.row].isOn
         cell.onOffSwitch.tag = indexPath.row
         cell.onOffSwitch.addTarget(self, action: #selector(didChangeValue(_:)), for: .valueChanged)
         cell.editingAccessoryView = cell.tailImageView
         
-        cell.alarmNameLabel.text = timeArray[indexPath.row].textLabel
+        cell.alarmNameLabel.text = alarmArray[indexPath.row].textLabel
         
-        cell.repeatStatusLabel.text = timeArray[indexPath.row].repeatStatus.uiStringMain
+        cell.repeatStatusLabel.text = alarmArray[indexPath.row].repeatStatus.uiStringMain
         
-        cell.timeLabel.textColor = timeArray[indexPath.row].isOn ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        cell.timeLabel.textColor = alarmArray[indexPath.row].isOn ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         
         return cell
     }
@@ -117,17 +117,17 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     @objc func didChangeValue(_ sender: UISwitch) {
         
         let index = sender.tag
-        let uuid = timeArray[index].uuid
-        let time = timeArray[index].time
-        let label = timeArray[index].textLabel
-        let sound = timeArray[index].ringTone
+        let uuid = alarmArray[index].uuid
+        let time = alarmArray[index].time
+        let label = alarmArray[index].textLabel
+        let sound = alarmArray[index].ringTone
 
         if sender.isOn {
-            timeArray[index].isOn = true
-            NotificationPush().setNotification(uuid: uuid, time: time, label: label, sound: sound)
+            alarmArray[index].isOn = true
+            NotificationPush().scheduleNotification(uuid: uuid, time: time, label: label, sound: sound)
         } else {
-            timeArray[index].isOn = false
-            NotificationPush().deleteNotification(uuid: uuid)
+            alarmArray[index].isOn = false
+//            NotificationPush().deleteNotification(uuid: uuid)
         }
         
         tableView.reloadRows(at: [[0, index]], with: .fade)
@@ -147,8 +147,8 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
             setAlarmVC.alarmVC = self
             setAlarmVC.modeChoice = .Edit
             
-            setAlarmVC.timeString = timeArray[indexPath.row].time.timeString
-            setAlarmVC.repeatStatus = timeArray[indexPath.row].repeatStatus.uiString
+            setAlarmVC.timeString = alarmArray[indexPath.row].time.timeString
+            setAlarmVC.repeatStatus = alarmArray[indexPath.row].repeatStatus.uiString
             setAlarmVC.indexPath = indexPath
 
             present(naviController, animated: true) {
@@ -166,8 +166,8 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            timeArray.remove(at: indexPath.row)
-            AlarmData.saveData(timeArray: timeArray)
+            alarmArray.remove(at: indexPath.row)
+            AlarmData.saveData(alarmArray: alarmArray)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
