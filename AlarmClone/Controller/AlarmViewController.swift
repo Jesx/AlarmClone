@@ -34,6 +34,7 @@ class AlarmViewController: UIViewController {
         
         alarmArray = AlarmData.loadData()
         InitialViewSetting.mainViewChange(self)
+        
     }
     
     @IBAction func editAlarm(_ sender: UIBarButtonItem) {

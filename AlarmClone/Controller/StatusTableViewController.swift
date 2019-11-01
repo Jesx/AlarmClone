@@ -25,7 +25,6 @@ class StatusTableViewController: UITableViewController {
         
         for day in repeatStatusArray {
             index = repeatArray.firstIndex(where: { $0.day == day })
-            print(index!)
             repeatArray[Int(index)].isSelected = true
         }
     }

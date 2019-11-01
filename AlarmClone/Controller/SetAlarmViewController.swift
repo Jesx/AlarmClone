@@ -139,7 +139,7 @@ class SetAlarmViewController: UIViewController {
             alarmVC.alarmArray[index].repeatStatus = repeatStatusArray
         }
         
-        alarmVC.alarmArray.sort { $0.time.timeString.compare($1.time.timeString) == .orderedAscending }
+        alarmVC.alarmArray.sort { $0.time.date.compare($1.time.date) == .orderedAscending }
         
         AlarmData.saveData(alarmArray: alarmVC.alarmArray)
         alarmVC.alarmArray = AlarmData.loadData()

@@ -9,14 +9,14 @@
 import Foundation
 
 class AlarmData {
-    
+        
     static func saveData(alarmArray: [Alarm]) {
         // Use PropertyListEncoder to convert Player into Data / NSData
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(alarmArray), forKey: "alarmArrayKey")
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(alarmArray), forKey: "alarmsKey")
     }
     
     static func loadData() -> [Alarm] {
-        guard let alarms = UserDefaults.standard.object(forKey: "alarmArrayKey") as? Data else { return [Alarm]() }
+        guard let alarms = UserDefaults.standard.object(forKey: "alarmsKey") as? Data else { return [Alarm]() }
         
         // Use PropertyListDecoder to convert Data into Player
         guard let alarmArray = (try? PropertyListDecoder().decode([Alarm].self, from: alarms)) else { return [Alarm]() }

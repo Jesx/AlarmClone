@@ -9,6 +9,7 @@
 import Foundation
 
 class InitialViewSetting {
+    
     static func mainViewChange(_ vc: AlarmViewController) {
         if vc.alarmArray.count == 0 {
             vc.tableView.isHidden = true
