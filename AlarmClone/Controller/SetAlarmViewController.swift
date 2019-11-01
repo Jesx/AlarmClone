@@ -21,9 +21,9 @@ class SetAlarmViewController: UIViewController {
     var modeChoice = Mode.Add
     var timeString: String?
     
-    var repeatStatus: String!
     var repeatStatusArray = [DetailInfo.DaysOfWeek]()
     
+    var repeatStatus: String!
     var ringTone: String!
     var label: String!
     
@@ -143,7 +143,7 @@ class SetAlarmViewController: UIViewController {
         
         AlarmData.saveData(alarmArray: alarmVC.alarmArray)
         alarmVC.alarmArray = AlarmData.loadData()
-        alarmVC.tableView.reloadData()        
+        alarmVC.tableView.reloadData()
         alarmVC.viewChange()
         dismiss(animated: true, completion: nil)
     }
@@ -169,6 +169,20 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
 
         return section == 0 ? 4 : 1
     }
+    
+    func cellContent(index: Int) -> (String, String) {
+        switch index {
+        case 0:
+            return ("Repeat", repeatStatus)
+        case 1:
+            return ("Label", label)
+        case 2:
+            return ("Sound", ringTone)
+        default:
+            break
+        }
+        return ("", "")
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -178,22 +192,9 @@ extension SetAlarmViewController: UITableViewDelegate, UITableViewDataSource {
             case 0...2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SetAlarmTableViewCell.self), for: indexPath) as! SetAlarmTableViewCell
                 
-                //
-                if indexPath.row == 0 {
-                    cell.itemLabel.text = "Repeat"
-                    cell.statusLabel.text = repeatStatus
-                    cell.accessoryView = cell.tailImageView
-                    
-                } else if indexPath.row == 1 {
-                    cell.itemLabel.text = "Label"
-                    cell.statusLabel.text = label
-                    cell.accessoryView = cell.tailImageView
-                    
-                } else if indexPath.row == 2 {
-                    cell.itemLabel.text = "Sound"
-                    cell.statusLabel.text = ringTone
-                }
-                
+                cell.itemLabel.text = cellContent(index: indexPath.row).0
+                cell.statusLabel.text = cellContent(index: indexPath.row).1
+
                 cell.accessoryView = cell.tailImageView
                 cell.selectionStyle = .none
                 

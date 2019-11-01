@@ -38,8 +38,7 @@ struct Time: Codable {
     var date: Date {
         dateComponents.date!
     }
-    
-    //
+
     var dateComponents: DateComponents {
         DateComponents(calendar: Calendar.current, hour: hour, minute: min, second: 0)
         
