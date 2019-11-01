@@ -12,14 +12,22 @@ class AlarmData {
         
     static func saveData(alarmArray: [Alarm]) {
         // Use PropertyListEncoder to convert Player into Data / NSData
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(alarmArray), forKey: "alarmsKey")
+        do {
+            let alarms = try PropertyListEncoder().encode(alarmArray)
+            UserDefaults.standard.set(alarms, forKey: "alarmsKey")
+        } catch {
+            print("Save data error.")
+        }
     }
     
     static func loadData() -> [Alarm] {
         guard let alarms = UserDefaults.standard.object(forKey: "alarmsKey") as? Data else { return [Alarm]() }
         
         // Use PropertyListDecoder to convert Data into Player
-        guard let alarmArray = (try? PropertyListDecoder().decode([Alarm].self, from: alarms)) else { return [Alarm]() }
+        
+        guard let alarmArray = (try? PropertyListDecoder().decode([Alarm].self, from: alarms)) else {
+            print("Load data error.")
+            return [Alarm]() }
         
         return alarmArray
     }

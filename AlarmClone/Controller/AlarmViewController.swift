@@ -33,8 +33,17 @@ class AlarmViewController: UIViewController {
         tableView.tableFooterView = UIView()
         
         alarmArray = AlarmData.loadData()
-        InitialViewSetting.mainViewChange(self)
-        
+        viewChange()
+    }
+    
+    func viewChange() {
+        if alarmArray.count == 0 {
+            tableView.isHidden = true
+            textLabel.isHidden = false
+        } else {
+            tableView.isHidden = false
+            textLabel.isHidden = true
+        }
     }
     
     @IBAction func editAlarm(_ sender: UIBarButtonItem) {
@@ -107,9 +116,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
         cell.editingAccessoryView = cell.tailImageView
         
         cell.alarmNameLabel.text = alarmArray[indexPath.row].textLabel
-        
         cell.repeatStatusLabel.text = alarmArray[indexPath.row].repeatStatus.uiStringMain
-        
         cell.timeLabel.textColor = alarmArray[indexPath.row].isOn ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         
         return cell
@@ -127,7 +134,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
             NotificationPush().deleteNotification(alarm: alarmArray[index])
         }
         
-        tableView.reloadRows(at: [[0, index]], with: .fade)
+        tableView.reloadRows(at: [[0, index]], with: .none)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -179,7 +186,7 @@ extension AlarmViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         editBarButton.title = "Edit"
         editBarButton.style = .plain
-        InitialViewSetting.mainViewChange(self)
+        viewChange()
     }
 }
 

@@ -15,12 +15,22 @@ enum DetailInfo {
     ]
     
     static let repeatArray: [String] = DaysOfWeek.allCases.map { $0.rawValue }
-    
-    static let repeatAdditionalArray = ["Never", "Every day", "Weekend"]
-    
+
     enum DaysOfWeek: String, CaseIterable {
         case Sunday, Monday, Tuesday, Wednesday, Thusday, Friday, Saturday
         var index: Int { DaysOfWeek.allCases.firstIndex(of: self)! }
+    }
+    
+    enum repeatAdditional {
+        case Never, Everday, Weekend
+        
+        var string: String {
+            switch self {
+            case .Never: return "Never"
+            case .Everday: return "Every day"
+            case .Weekend: return "Weekend"
+            }
+        }
     }
 }
 
@@ -29,11 +39,11 @@ extension Array where Element == DetailInfo.DaysOfWeek {
     var uiString: String {
         switch self {
         case []:
-            return DetailInfo.repeatAdditionalArray[0]
+            return DetailInfo.repeatAdditional.Never.string
         case [.Sunday, .Monday, .Tuesday, .Wednesday, .Thusday, .Friday,.Saturday]:
-            return DetailInfo.repeatAdditionalArray[1]
+            return DetailInfo.repeatAdditional.Everday.string
         case [.Sunday, .Saturday]:
-            return DetailInfo.repeatAdditionalArray[2]
+            return DetailInfo.repeatAdditional.Weekend.string
         default:
             return map{ $0.rawValue.prefix(3) }.joined(separator: " ")
         }
@@ -41,11 +51,11 @@ extension Array where Element == DetailInfo.DaysOfWeek {
     
     var uiStringMain: String {
         switch uiString {
-        case DetailInfo.repeatAdditionalArray[0]:
+        case DetailInfo.repeatAdditional.Never.string:
             return ""
-        case DetailInfo.repeatAdditionalArray[1]:
+        case DetailInfo.repeatAdditional.Everday.string:
             return ", \(uiString.lowercased())"
-        case DetailInfo.repeatAdditionalArray[2]:
+        case DetailInfo.repeatAdditional.Weekend.string:
             return ", every \(uiString.lowercased())"
         default:
             return ", \(uiString)"

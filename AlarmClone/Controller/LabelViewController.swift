@@ -19,8 +19,11 @@ class LabelViewController: UIViewController {
         super.viewDidLoad()
 
         textField.setModifyClearButton()
+        textField.enablesReturnKeyAutomatically = true
         
         textField.text = text
+
+        textField.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -30,11 +33,18 @@ class LabelViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let text = textField.text {
+        if let text = textField.text, !text.isEmpty {
             delegate?.labelSetting(label: text)
         }
     }
 }
- 
 
-
+extension LabelViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = textField.text, !text.isEmpty {
+            delegate?.labelSetting(label: text)
+        }
+        navigationController?.popViewController(animated: true)
+        return true
+    }
+}

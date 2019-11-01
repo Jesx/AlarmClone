@@ -39,8 +39,9 @@ struct Time: Codable {
         dateComponents.date!
     }
     
+    //
     var dateComponents: DateComponents {
-        DateComponents(calendar: Calendar.current, year: 2019, month: 10, day: 29, hour: hour, minute: min, second: 0)
+        DateComponents(calendar: Calendar.current, hour: hour, minute: min, second: 0)
         
     }
 }

@@ -36,7 +36,6 @@
 		5673F60C235E943F000B9A8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5673F60A235E943F000B9A8A /* LaunchScreen.storyboard */; };
 		5673F614235E9925000B9A8A /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5673F613235E9925000B9A8A /* AlarmTableViewCell.swift */; };
 		5673F616235EA043000B9A8A /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5673F615235EA043000B9A8A /* SetAlarmViewController.swift */; };
-		56A1A589236ACFBF008D1C21 /* InitialViewSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A1A588236ACFBF008D1C21 /* InitialViewSetting.swift */; };
 		56D25A642360B58C00296148 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D25A632360B58C00296148 /* LabelViewController.swift */; };
 		56D25A882361524200296148 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D25A872361524200296148 /* AlarmData.swift */; };
 		56D25A8A23616D3200296148 /* RingToneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D25A8923616D3200296148 /* RingToneTableViewController.swift */; };
@@ -74,7 +73,6 @@
 		5673F60D235E943F000B9A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5673F613235E9925000B9A8A /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		5673F615235EA043000B9A8A /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
-		56A1A588236ACFBF008D1C21 /* InitialViewSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewSetting.swift; sourceTree = "<group>"; };
 		56D25A632360B58C00296148 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		56D25A872361524200296148 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
 		56D25A8923616D3200296148 /* RingToneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingToneTableViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				56732F1E23618CB2009CB9B7 /* RingToneTableViewCell.swift */,
 				56732F1F23618CB2009CB9B7 /* RingToneTableViewCell.xib */,
 				56077EDF2361EDB800AD72C1 /* CustomTextField.swift */,
-				56A1A588236ACFBF008D1C21 /* InitialViewSetting.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,7 +278,6 @@
 				5673F600235E943E000B9A8A /* AppDelegate.swift in Sources */,
 				56732F2023618CB2009CB9B7 /* RingToneTableViewCell.swift in Sources */,
 				560FFFDE2364400100633DA4 /* NotificationPush.swift in Sources */,
-				56A1A589236ACFBF008D1C21 /* InitialViewSetting.swift in Sources */,
 				5673F602235E943E000B9A8A /* SceneDelegate.swift in Sources */,
 				566FB14F23601B41004922CC /* SnoozeTableViewCell.swift in Sources */,
 				5673F614235E9925000B9A8A /* AlarmTableViewCell.swift in Sources */,
