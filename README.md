@@ -1,6 +1,6 @@
 # AlarmClone
 
-An app that clone original iOS system alarm, which is in the clock app.
+An app clones original iOS system alarm, which is in the clock app.
 
 ## Contents
 
